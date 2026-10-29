@@ -1,0 +1,8 @@
+app:
+  documents:
+    - { id: umowa, template: umowa.docx, required: true,
+        output-name: "{{imie_nazwisko_lat}}_umowa_{{data_dokumentu}}" }
+    - { id: oswiadczenie, template: oswiadczenie.docx, required: true,
+        output-name: "{{imie_nazwisko_lat}}_oswiadczenie_{{data_dokumentu}}" }
+    - { id: aneks, template: aneks.docx, required: false,
+        output-name: "{{imie_nazwisko_lat}}_aneks_{{data_dokumentu}}" }

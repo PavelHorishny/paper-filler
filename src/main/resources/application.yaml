@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: paper-filler
+
+  config:
+    import: "file:./config/fields.yaml, file:./config/documents.yaml"
+app:
+  templates-dir: ./templates
+  output-dir: ./output
+  cache-dir: ./cache

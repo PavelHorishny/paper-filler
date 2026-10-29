@@ -1,0 +1,17 @@
+app:
+  fields:
+    - { id: imie_nazwisko, label: "ФИО", type: text, required: true, translit-to: imie_nazwisko_lat }
+    - { id: imie_nazwisko_lat, label: "ФИО латиницей", type: text, required: true }
+    - { id: data_urodzenia, label: "Дата рождения", type: date, required: true }
+    - { id: nr_paszportu, label: "№ паспорта", type: text, required: true, cache: false }
+    - { id: adres, label: "Адрес", type: text, required: true }
+    - { id: telefon, label: "Телефон", type: text, pattern: "^\\+?[0-9 ]{9,15}$" }
+    - { id: email, label: "E-mail", type: text }
+    - { id: miasto, label: "Город", type: text, required: true }
+    - { id: data_dokumentu, label: "Дата документа", type: date, required: true }
+    - { id: firma, label: "Фирма", type: text }
+    - { id: stanowisko, label: "Должность", type: text }
+    - { id: wynagrodzenie, label: "Зарплата", type: number }
+    - { id: data_rozpoczecia, label: "Дата начала", type: date }
+    - { id: drugi_uczestnik, label: "Второй участник", type: text, translit-to: drugi_uczestnik_lat }
+    - { id: drugi_uczestnik_lat, label: "Второй участник латиницей", type: text }
