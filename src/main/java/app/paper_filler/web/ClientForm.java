@@ -9,13 +9,15 @@ public class ClientForm {
     private String pesel;
     private String passport;
     private String account;
-    private LocalDate date;
+    private LocalDate fulfilmentDate;
     private LocalDate birthDate;
     private String phoneNumber;
     private String viber;
     private String email;
     private String taxOffice;
-    private Address homeAddress;
-    private Address localAddress;
+    @Valid
+    private Address homeAddress = new Address();
+    @Valid
+    private Address localAddress = new Address();
 
 }
