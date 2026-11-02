@@ -2,6 +2,10 @@ package app.paper_filler.web;
 
 import java.time.LocalDate;
 import jakarta.validation.Valid;
+import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Data
 
 public class ClientForm {
     private Citizenship citizenship;
@@ -10,7 +14,9 @@ public class ClientForm {
     private String pesel;
     private String passport;
     private String account;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate fulfilmentDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate birthDate;
     private String phoneNumber;
     private String viber;

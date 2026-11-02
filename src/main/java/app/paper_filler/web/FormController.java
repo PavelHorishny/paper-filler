@@ -12,6 +12,7 @@ public class FormController {
     @GetMapping ("/")
     public String showForm(Model model) {
         model.addAttribute("clientForm", new ClientForm());
+        model.addAttribute("citizenship", Citizenship.values());
         return "form";
     }
 

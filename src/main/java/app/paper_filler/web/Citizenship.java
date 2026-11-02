@@ -1,5 +1,8 @@
 package app.paper_filler.web;
 
+import lombok.Getter;
+
+@Getter
 public enum Citizenship {
     PL("PL"),UA("UA"),BY("BY"),MD("MD");
 
@@ -9,7 +12,4 @@ public enum Citizenship {
         this.label = label;
     }
 
-    public String getLabel(){
-        return label;
-    }
 }
