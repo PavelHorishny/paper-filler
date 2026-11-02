@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Paper Filler</title>
+</head>
+<body>
+<form th:action="@{/}" th:object="${clientForm}" method="post">
+    <p>
+        <label>Имя</label><br>
+        <input type="text" th:field="*{name}">
+    </p>
+    <p>
+        <label>Фамилия</label><br>
+        <input type="text" th:field="*{surname}">
+    </p>
+    <p>
+        <label>Телефон</label><br>
+        <input type="text" th:field="*{phoneNumber}">
+    </p>
+    <button type="submit">Отправить</button>
+</form>
+</body>
+</html>
