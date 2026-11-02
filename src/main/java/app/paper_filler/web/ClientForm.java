@@ -1,6 +1,7 @@
 package app.paper_filler.web;
 
 import java.time.LocalDate;
+import jakarta.validation.Valid;
 
 public class ClientForm {
     private Citizenship citizenship;
