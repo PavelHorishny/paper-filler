@@ -1,9 +1,14 @@
 package app.paper_filler.core;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 
 import app.paper_filler.web.ClientForm;
+import com.deepoove.poi.XWPFTemplate;
+import org.springframework.stereotype.Service;
 
 @Service
 public class DocumentGenerator {

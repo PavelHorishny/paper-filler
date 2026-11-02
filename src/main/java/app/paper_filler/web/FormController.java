@@ -1,5 +1,6 @@
 package app.paper_filler.web;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import app.paper_filler.core.DocumentGenerator;
 
+import java.io.IOException;
+
 @Controller
+@RequiredArgsConstructor
 public class FormController {
 
     private final DocumentGenerator generator;
@@ -21,7 +25,7 @@ public class FormController {
     }
 
     @PostMapping("/")
-    public String submit(@ModelAttribute ClientForm clientForm) {
+    public String submit(@ModelAttribute ClientForm clientForm) throws IOException {
         
         System.out.println(clientForm);
         generator.generate(clientForm);
