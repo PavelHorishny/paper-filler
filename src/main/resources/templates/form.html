@@ -26,6 +26,13 @@
         <label>E-mail</label><br>
         <input type="text" th:field="*{email}">
     </p>
+        <p>
+        <label>Гражданство</label><br>
+        <label th:each="c : ${citizenships}">
+            <input type="radio" th:field="*{citizenship}" th:value="${c}">
+            <span th:text="${c.label}"></span>
+        </label>
+    </p>
     <p>
         <label>PESEL</label><br>
         <input type="text" th:field="*{pesel}">
