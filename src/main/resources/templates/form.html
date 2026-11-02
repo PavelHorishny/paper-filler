@@ -50,6 +50,41 @@
         <label>Дата исполнения</label><br>
         <input type="date" th:field="*{fulfilmentDate}">
     </p>
+        <fieldset>
+        <legend>Домашний адрес</legend>
+        <p>
+            <label>Страна</label><br>
+            <input type="text" th:field="*{homeAddress.country}">
+        </p>
+        <p>
+            <label>Область</label><br>
+            <input type="text" th:field="*{homeAddress.region}">
+        </p>
+        <p>
+            <label>Район</label><br>
+            <input type="text" th:field="*{homeAddress.district}">
+        </p>
+        <p>
+            <label>Город</label><br>
+            <input type="text" th:field="*{homeAddress.city}">
+        </p>
+        <p>
+            <label>Улица</label><br>
+            <input type="text" th:field="*{homeAddress.street}">
+        </p>
+        <p>
+            <label>Дом</label><br>
+            <input type="text" th:field="*{homeAddress.house}">
+        </p>
+        <p>
+            <label>Квартира</label><br>
+            <input type="text" th:field="*{homeAddress.apartment}">
+        </p>
+        <p>
+            <label>Индекс</label><br>
+            <input type="text" th:field="*{homeAddress.postalCode}">
+        </p>
+    </fieldset>
     <button type="submit">Отправить</button>
 
     <p>
