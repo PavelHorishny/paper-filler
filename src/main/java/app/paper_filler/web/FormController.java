@@ -6,8 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@Controller 
+import app.paper_filler.core.DocumentGenerator;
+
+@Controller
 public class FormController {
+
+    private final DocumentGenerator generator;
 
     @GetMapping ("/")
     public String showForm(Model model) {
@@ -18,7 +22,9 @@ public class FormController {
 
     @PostMapping("/")
     public String submit(@ModelAttribute ClientForm clientForm) {
+        
         System.out.println(clientForm);
+        generator.generate(clientForm);
         return "redirect:/";
     }
 }

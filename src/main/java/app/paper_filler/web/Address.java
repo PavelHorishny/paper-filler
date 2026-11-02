@@ -1,5 +1,8 @@
 package app.paper_filler.web;
 
+import lombok.Data;
+
+@Data
 public class Address {
     private String country;
     private String region;
