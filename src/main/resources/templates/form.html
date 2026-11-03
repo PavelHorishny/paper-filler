@@ -6,6 +6,14 @@
 </head>
 <body>
 <form th:action="@{/}" th:object="${clientForm}" method="post">
+
+    <p>
+        <label>Гражданство</label><br>
+        <label th:each="c : ${citizenships}">
+            <input type="radio" th:field="*{citizenship}" th:value="${c}">
+            <span th:text="${c.label}"></span>
+        </label>
+    </p>
     <p>
         <label>Имя</label><br>
         <input type="text" th:field="*{name}">
@@ -15,28 +23,46 @@
         <input type="text" th:field="*{surname}">
     </p>
     <p>
-        <label>Телефон</label><br>
-        <input type="text" th:field="*{phoneNumber}">
+        <label>Дата рождения</label><br>
+        <input type="date" th:field="*{birthDate}">
     </p>
+
+    <p id="student-row" hidden>
+        <label>
+            <input type="checkbox" th:field="*{student}"> Студент
+        </label>
+    </p>
+    <fieldset id="school-block" hidden>
+        <legend>Учебное заведение</legend>
         <p>
-        <label>Viber</label><br>
-        <input type="text" th:field="*{viber}">
-    </p>
-    <p>
-        <label>E-mail</label><br>
-        <input type="text" th:field="*{email}">
-    </p>
+            <label>Название</label><br>
+            <input type="text" th:field="*{schoolName}">
+        </p>
+    </fieldset>
+
     <p>
         <label>PESEL</label><br>
         <input type="text" th:field="*{pesel}">
     </p>
-        <p>
+    <p>
         <label>Паспорт: серия</label><br>
         <input type="text" th:field="*{passport.series}">
     </p>
     <p>
         <label>Паспорт: номер</label><br>
         <input type="text" th:field="*{passport.number}">
+    </p>
+    <p>
+        <label>Телефон</label><br>
+        <input type="text" th:field="*{phoneNumber}">
+    </p>
+    <p>
+        <label>Viber</label><br>
+        <input type="text" th:field="*{viber}">
+    </p>
+    <p>
+        <label>E-mail</label><br>
+        <input type="text" th:field="*{email}">
     </p>
     <p>
         <label>Номер счёта</label><br>
@@ -46,28 +72,12 @@
         <label>Налоговая</label><br>
         <input type="text" th:field="*{taxOffice}">
     </p>
-        <p>
-        <label>Дата рождения</label><br>
-        <input type="date" th:field="*{birthDate}">
-    </p>
-        <p id="student-row" hidden>
-        <label>
-            <input type="checkbox" th:field="*{student}"> Студент
-        </label>
-    </p>
-
-    <fieldset id="school-block" hidden>
-        <legend>Учебное заведение</legend>
-        <p>
-            <label>Название</label><br>
-            <input type="text" th:field="*{schoolName}">
-        </p>
-    </fieldset>
-        <p>
+    <p>
         <label>Дата исполнения</label><br>
         <input type="date" th:field="*{fulfilmentDate}">
     </p>
-        <fieldset>
+
+    <fieldset>
         <legend>Домашний адрес</legend>
         <p>
             <label>Страна</label><br>
@@ -102,16 +112,10 @@
             <input type="text" th:field="*{homeAddress.postalCode}">
         </p>
     </fieldset>
-    <button type="submit">Отправить</button>
 
-    <p>
-        <label>Гражданство</label><br>
-        <label th:each="c : ${citizenships}">
-            <input type="radio" th:field="*{citizenship}" th:value="${c}">
-            <span th:text="${c.label}"></span>
-        </label>
-    </p>
+    <button type="submit">Отправить</button>
 </form>
+
 <script th:src="@{/js/form.js}"></script>
 </body>
 </html>

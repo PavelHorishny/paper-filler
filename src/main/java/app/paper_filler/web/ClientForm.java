@@ -8,18 +8,23 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 
 public class ClientForm {
+
     private Citizenship citizenship;
     private String name;
     private String surname;
     private String pesel;
-    private bolean student;
-    private String schoolName;
     private Passport passport = new Passport();
     private String account;
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    private LocalDate fulfilmentDate;
+
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate birthDate;
+
+    private boolean student;
+    private String schoolName;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate fulfilmentDate;
+
     private String phoneNumber;
     private String viber;
     private String email;
