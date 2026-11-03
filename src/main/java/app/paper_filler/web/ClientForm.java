@@ -26,5 +26,17 @@ public class ClientForm {
     private Address homeAddress = new Address();
     @Valid
     private Address localAddress = new Address();
+    /*
+    * Województwo - область
+    * Powiat - район
+    * Gmina - город
+    * Ulica
+    * Dom
+    * Mieszkania
+    * Miejscowość-город
+    * kod pocztowy
+    * доп пункт место рождения
+    * доп пункт место учебы
+    * */
 
 }
