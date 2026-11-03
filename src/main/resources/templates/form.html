@@ -30,9 +30,13 @@
         <label>PESEL</label><br>
         <input type="text" th:field="*{pesel}">
     </p>
+        <p>
+        <label>Паспорт: серия</label><br>
+        <input type="text" th:field="*{passport.series}">
+    </p>
     <p>
-        <label>Паспорт</label><br>
-        <input type="text" th:field="*{passport}">
+        <label>Паспорт: номер</label><br>
+        <input type="text" th:field="*{passport.number}">
     </p>
     <p>
         <label>Номер счёта</label><br>
@@ -46,6 +50,19 @@
         <label>Дата рождения</label><br>
         <input type="date" th:field="*{birthDate}">
     </p>
+        <p id="student-row" hidden>
+        <label>
+            <input type="checkbox" th:field="*{student}"> Студент
+        </label>
+    </p>
+
+    <fieldset id="school-block" hidden>
+        <legend>Учебное заведение</legend>
+        <p>
+            <label>Название</label><br>
+            <input type="text" th:field="*{schoolName}">
+        </p>
+    </fieldset>
         <p>
         <label>Дата исполнения</label><br>
         <input type="date" th:field="*{fulfilmentDate}">
@@ -95,5 +112,6 @@
         </label>
     </p>
 </form>
+<script th:src="@{/js/form.js}"></script>
 </body>
 </html>

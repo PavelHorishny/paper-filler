@@ -12,7 +12,9 @@ public class ClientForm {
     private String name;
     private String surname;
     private String pesel;
-    private String passport;
+    private bolean student;
+    private String schoolName;
+    private Passport passport = new Passport();
     private String account;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate fulfilmentDate;
