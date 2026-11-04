@@ -28,22 +28,12 @@ public class ClientForm {
     private String phoneNumber;
     private String viber;
     private String email;
-    private String taxOffice;
+    private TaxOffice taxOffice;
     @Valid
     private Address homeAddress = new Address();
     @Valid
     private Address localAddress = new Address();
-    /*
-    * Województwo - область
-    * Powiat - район
-    * Gmina - город
-    * Ulica
-    * Dom
-    * Mieszkania
-    * Miejscowość-город
-    * kod pocztowy
-    * доп пункт место рождения
-    * доп пункт место учебы
-    * */
+
+    private String birthPlace;
 
 }
