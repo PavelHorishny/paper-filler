@@ -21,3 +21,7 @@
 .postal {
     width: 80px;
 }
+.checkbox-cell {
+    align-self: flex-end;
+    padding-bottom: 4px;
+}
