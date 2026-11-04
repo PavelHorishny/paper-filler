@@ -9,11 +9,11 @@ public enum TaxOffice {
     THIRD ("3_rd", "Trzeci Urząd Skarbowy w Szczecinie ul. Lucjana Rydla 65, 70-783 Szczecin");
 
     private final String label;
-    private final String name;
+    private final String address;
 
-    TaxOffice (String label, String name){
+    TaxOffice (String label, String address){
         this.label = label;
-        this.name = name;
+        this.address = address;
     }
 
 }

@@ -36,6 +36,7 @@ public class FormController {
                 : new ClientForm();
         model.addAttribute("clientForm", form);
         model.addAttribute("citizenships", Citizenship.values());
+        model.addAttribute("taxOffices",TaxOffice.values());
         return "form";
     }
 

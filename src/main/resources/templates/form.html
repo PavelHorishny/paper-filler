@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
+    <link rel = "stylesheet" th:href = "@{/css/style.css}">
     <meta charset="UTF-8">
     <title>Paper Filler</title>
 </head>
@@ -14,19 +15,26 @@
             <span th:text="${c.label}"></span>
         </label>
     </p>
+    <div class="personal-data">
     <p>
         <label>Имя</label><br>
-        <input type="text" th:field="*{name}">
+        <label>
+            <input type="text" th:field="*{name}">
+        </label>
     </p>
     <p>
         <label>Фамилия</label><br>
-        <input type="text" th:field="*{surname}">
+        <label>
+            <input type="text" th:field="*{surname}">
+        </label>
     </p>
     <p>
         <label>Дата рождения</label><br>
-        <input type="date" th:field="*{birthDate}">
+        <label>
+            <input type="date" th:field="*{birthDate}">
+        </label>
     </p>
-
+    </div>
     <p id="student-row" hidden>
         <label>
             <input type="checkbox" th:field="*{student}"> Студент
@@ -69,8 +77,10 @@
         <input type="text" th:field="*{account}">
     </p>
     <p>
-        <label>Налоговая</label><br>
-        <input type="text" th:field="*{taxOffice}">
+        <select th:field="*{taxOffice}">
+            <option value="">_</option>
+            <option th:each="t : ${taxOffices}" th:value="${t}" th:text="${t.label}"></option>
+        </select>
     </p>
     <p>
         <label>Дата исполнения</label><br>
@@ -81,35 +91,51 @@
         <legend>Домашний адрес</legend>
         <p>
             <label>Страна</label><br>
-            <input type="text" th:field="*{homeAddress.country}">
+            <label>
+                <input type="text" th:field="*{homeAddress.country}">
+            </label>
         </p>
         <p>
             <label>Область</label><br>
-            <input type="text" th:field="*{homeAddress.region}">
+            <label>
+                <input type="text" th:field="*{homeAddress.wojewodztwo}">
+            </label>
         </p>
         <p>
             <label>Район</label><br>
-            <input type="text" th:field="*{homeAddress.district}">
+            <label>
+                <input type="text" th:field="*{homeAddress.powiat}">
+            </label>
         </p>
         <p>
             <label>Город</label><br>
-            <input type="text" th:field="*{homeAddress.city}">
+            <label>
+                <input type="text" th:field="*{homeAddress.city}">
+            </label>
         </p>
         <p>
             <label>Улица</label><br>
-            <input type="text" th:field="*{homeAddress.street}">
+            <label>
+                <input type="text" th:field="*{homeAddress.street}">
+            </label>
         </p>
         <p>
             <label>Дом</label><br>
-            <input type="text" th:field="*{homeAddress.house}">
+            <label>
+                <input type="text" th:field="*{homeAddress.house}">
+            </label>
         </p>
         <p>
             <label>Квартира</label><br>
-            <input type="text" th:field="*{homeAddress.apartment}">
+            <label>
+                <input type="text" th:field="*{homeAddress.apartment}">
+            </label>
         </p>
         <p>
             <label>Индекс</label><br>
-            <input type="text" th:field="*{homeAddress.postalCode}">
+            <label>
+                <input type="text" th:field="*{homeAddress.postalCode}">
+            </label>
         </p>
     </fieldset>
 

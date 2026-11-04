@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Address {
     private String country;
-    private String wojewudztwo;
+    private String wojewodztwo;
     private String powiat;
     private String gmina;
     private String street;
