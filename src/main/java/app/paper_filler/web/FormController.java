@@ -15,6 +15,7 @@ import tools.jackson.databind.json.JsonMapper;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -42,7 +43,7 @@ public class FormController {
 
     @PostMapping("/")
     public String submitForm(@ModelAttribute ClientForm clientForm) throws IOException {
-        
+        clientForm.setFulfilmentDate(LocalDate.now());
         Files.createDirectories(properties.cacheDir());
         jsonMapper.writeValue(formFile().toFile(), clientForm);
         return "redirect:/documents";

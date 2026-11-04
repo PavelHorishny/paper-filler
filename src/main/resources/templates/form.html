@@ -16,24 +16,32 @@
         </label>
     </p>
     <div class="personal-data">
-    <p>
-        <label>Имя</label><br>
-        <label>
-            <input type="text" th:field="*{name}">
-        </label>
-    </p>
-    <p>
-        <label>Фамилия</label><br>
-        <label>
-            <input type="text" th:field="*{surname}">
-        </label>
-    </p>
-    <p>
-        <label>Дата рождения</label><br>
-        <label>
-            <input type="date" th:field="*{birthDate}">
-        </label>
-    </p>
+        <div>
+            <label>Имя</label><br>
+            <label>
+                <input type="text" th:field="*{name}">
+            </label>
+        </div>
+        <div>
+            <label>Фамилия</label><br>
+            <label>
+                <input type="text" th:field="*{surname}">
+            </label>
+        </div>
+        <div>
+            <label>Дата рождения</label><br>
+            <label>
+                <input type="date" th:field="*{birthDate}">
+            </label>
+        </div>
+        <div class="row">
+            <div>
+                <label>Место рождения</label><br>
+                <label>
+                    <input type="text" class="wide" th:field="*{birthPlace}">
+                </label>
+            </div>
+        </div>
     </div>
     <p id="student-row" hidden>
         <label>
@@ -48,95 +56,154 @@
         </p>
     </fieldset>
 
-    <p>
-        <label>PESEL</label><br>
-        <input type="text" th:field="*{pesel}">
-    </p>
-    <p>
-        <label>Паспорт: серия</label><br>
-        <input type="text" th:field="*{passport.series}">
-    </p>
-    <p>
-        <label>Паспорт: номер</label><br>
-        <input type="text" th:field="*{passport.number}">
-    </p>
-    <p>
-        <label>Телефон</label><br>
-        <input type="text" th:field="*{phoneNumber}">
-    </p>
-    <p>
-        <label>Viber</label><br>
-        <input type="text" th:field="*{viber}">
-    </p>
-    <p>
-        <label>E-mail</label><br>
-        <input type="text" th:field="*{email}">
-    </p>
-    <p>
-        <label>Номер счёта</label><br>
-        <input type="text" th:field="*{account}">
-    </p>
-    <p>
-        <select th:field="*{taxOffice}">
-            <option value="">_</option>
-            <option th:each="t : ${taxOffices}" th:value="${t}" th:text="${t.label}"></option>
-        </select>
-    </p>
-    <p>
-        <label>Дата исполнения</label><br>
-        <input type="date" th:field="*{fulfilmentDate}">
-    </p>
+    <div class="personal-data">
+        <div>
+            <label>Серия</label><br>
+            <label>
+                <input type="text" class="short" th:field="*{passport.series}">
+            </label>
+        </div>
+        <div>
+            <label>Номер паспорта</label><br>
+            <label>
+                <input type="text" th:field="*{passport.number}">
+            </label>
+        </div>
+        <div>
+            <label>PESEL</label><br>
+            <label>
+                <input type="text" th:field="*{pesel}">
+            </label>
+        </div>
+    </div>
+    <div class="personal-data">
+        <div>
+            <label>Номер счёта</label><br>
+            <label>
+                <input type="text" class="wide" th:field="*{account}">
+            </label>
+        </div>
+    </div>
+
+    <div class="personal-data">
+        <div>
+            <label>Телефон</label><br>
+            <label>
+                <input type="text" th:field="*{phoneNumber}">
+            </label>
+        </div>
+        <div>
+            <label>Viber</label><br>
+            <label>
+                <input type="text" th:field="*{viber}">
+            </label>
+        </div>
+        <div>
+            <label>E-mail</label><br>
+            <label>
+                <input type="text" th:field="*{email}">
+            </label>
+        </div>
+    </div>
 
     <fieldset>
         <legend>Домашний адрес</legend>
-        <p>
-            <label>Страна</label><br>
-            <label>
+
+        <div class="row">
+            <div>
+                <label>Страна</label><br>
                 <input type="text" th:field="*{homeAddress.country}">
-            </label>
-        </p>
-        <p>
-            <label>Область</label><br>
-            <label>
+            </div>
+            <div>
+                <label>Województwo</label><br>
                 <input type="text" th:field="*{homeAddress.wojewodztwo}">
-            </label>
-        </p>
-        <p>
-            <label>Район</label><br>
-            <label>
+            </div>
+            <div>
+                <label>Powiat</label><br>
                 <input type="text" th:field="*{homeAddress.powiat}">
-            </label>
-        </p>
-        <p>
-            <label>Город</label><br>
-            <label>
+            </div>
+            <div>
+                <label>Gmina</label><br>
+                <input type="text" th:field="*{homeAddress.gmina}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <label>Индекс</label><br>
+                <input type="text" class="postal" th:field="*{homeAddress.postalCode}">
+            </div>
+            <div>
+                <label>Город</label><br>
                 <input type="text" th:field="*{homeAddress.city}">
-            </label>
-        </p>
-        <p>
-            <label>Улица</label><br>
-            <label>
+            </div>
+            <div>
+                <label>Улица</label><br>
                 <input type="text" th:field="*{homeAddress.street}">
-            </label>
-        </p>
-        <p>
-            <label>Дом</label><br>
-            <label>
-                <input type="text" th:field="*{homeAddress.house}">
-            </label>
-        </p>
-        <p>
-            <label>Квартира</label><br>
-            <label>
-                <input type="text" th:field="*{homeAddress.apartment}">
-            </label>
-        </p>
-        <p>
-            <label>Индекс</label><br>
-            <label>
-                <input type="text" th:field="*{homeAddress.postalCode}">
-            </label>
-        </p>
+            </div>
+            <div>
+                <label>Дом</label><br>
+                <input type="text" class="short" th:field="*{homeAddress.house}">
+            </div>
+            <div>
+                <label>Кв.</label><br>
+                <input type="text" class="short" th:field="*{homeAddress.apartment}">
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Польский адрес</legend>
+
+        <div class="row">
+            <div>
+                <label>Страна</label><br>
+                <input type="text" th:field="*{homeAddress.country}">
+            </div>
+            <div>
+                <label>Województwo</label><br>
+                <input type="text" th:field="*{homeAddress.wojewodztwo}">
+            </div>
+            <div>
+                <label>Powiat</label><br>
+                <input type="text" th:field="*{homeAddress.powiat}">
+            </div>
+            <div>
+                <label>Gmina</label><br>
+                <input type="text" th:field="*{homeAddress.gmina}">
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <label>Индекс</label><br>
+                <input type="text" class="postal" th:field="*{homeAddress.postalCode}">
+            </div>
+            <div>
+                <label>Город</label><br>
+                <input type="text" th:field="*{homeAddress.city}">
+            </div>
+            <div>
+                <label>Улица</label><br>
+                <input type="text" th:field="*{homeAddress.street}">
+            </div>
+            <div>
+                <label>Дом</label><br>
+                <input type="text" class="short" th:field="*{homeAddress.house}">
+            </div>
+            <div>
+                <label>Кв.</label><br>
+                <input type="text" class="short" th:field="*{homeAddress.apartment}">
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <label>Urząd skarbowy</label><br>
+                <select th:field="*{taxOffice}">
+                    <option value="">—</option>
+                    <option th:each="t : ${taxOffices}" th:value="${t}" th:text="${t.label}"></option>
+                </select>
+            </div>
+        </div>
     </fieldset>
 
     <button type="submit">Отправить</button>
