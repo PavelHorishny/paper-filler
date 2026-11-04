@@ -1,0 +1,27 @@
+.personal-data {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.short {
+    width: 60px;
+}
+
+.wide {
+    width: 300px;
+}
+
+.row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.postal {
+    width: 80px;
+}
+.checkbox-cell {
+    align-self: flex-end;
+    padding-bottom: 4px;
+}

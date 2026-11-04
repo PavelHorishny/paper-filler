@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Выбор документов</title>
+</head>
+<body>
+<h2>Какие документы заполнить?</h2>
+
+<form th:action="@{/documents}" method="post">
+    <p th:each="d : ${documents}">
+        <label>
+            <input type="checkbox" name="docs" th:value="${d.id()}" th:checked="${d.required()}">
+            <span th:text="${d.id()}"></span>
+        </label>
+    </p>
+    <button type="submit">Сформировать</button>
+</form>
+
+<p><a th:href="@{/}">← Назад к форме</a></p>
+</body>
+</html>
