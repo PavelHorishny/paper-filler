@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 
 import app.paper_filler.config.AppProperties;
 import app.paper_filler.config.DocumentDef;
+import app.paper_filler.core.translit.TransliterationService;
 import app.paper_filler.web.ClientForm;
 import com.deepoove.poi.XWPFTemplate;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class DocumentGenerator {
     private static final DateTimeFormatter DATE = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     private final AppProperties properties;
+    private final TransliterationService translit;
 
     public void generate (ClientForm form, List<String> docIds)  throws IOException {
         Map<String, Object> data = new HashMap<>();
@@ -35,6 +37,7 @@ public class DocumentGenerator {
         data.put("data_dokumentu",formatDate(form.getFulfilmentDate()));
         data.put("series", form.getPassport().getSeries());
         data.put("number", form.getPassport().getNumber());
+        data.put("imie_nazwisko_lat", translit.transliterate(fullName(form), form.getCitizenship()));
 
         Files.createDirectories(properties.outputDir());
         for (DocumentDef doc : properties.documents()){
