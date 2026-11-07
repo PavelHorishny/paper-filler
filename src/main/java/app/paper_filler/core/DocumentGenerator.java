@@ -29,12 +29,12 @@ public class DocumentGenerator {
 
     public void generate (ClientForm form, List<String> docIds)  throws IOException {
         Map<String, Object> data = new HashMap<>();
-        data.put("imie", form.getName());
-        data.put("nazwisko", form.getSurname());
+        data.put("name", form.getName());
+        data.put("surname", form.getSurname());
         data.put("imie_nazwisko", fullName(form));
         data.put("telefon", text(form.getPhoneNumber()));
         data.put("data_urodzenia", formatDate(form.getBirthDate()));
-        data.put("data_dokumentu",formatDate(form.getFulfilmentDate()));
+        data.put("fulfilmentDate",formatDate(form.getFulfilmentDate()));
         data.put("series", form.getPassport().getSeries());
         data.put("number", form.getPassport().getNumber());
         data.put("imie_nazwisko_lat", translit.transliterate(fullName(form), form.getCitizenship()));

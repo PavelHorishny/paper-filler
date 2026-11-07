@@ -1,7 +1,7 @@
 app:
   documents:
     - { id: karta, template: Informacja (karta) APT.docx, required: true,
-        output-name: "{{name}}{{surname}}_karta_{{data_dokumentu}}" }
+        output-name: "{{name}} {{surname}}_karta_{{fulfilmentDate}}" }
     - { id: oswiadczenie, template: oswiadczenie.docx, required: true,
         output-name: "{{name}}{{surname}}_oswiadczenie_{{data_dokumentu}}" }
     - { id: aneks, template: aneks.docx, required: false,
