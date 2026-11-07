@@ -11,10 +11,9 @@ public class AddressService {
     public Address fillAddress(Address address, Citizenship citizenship) {
     // Address filledAddress = new Address();
     return Address.builder()
-        .country(citizenship.getCountry())
-        .wojewodztwo(transliterationService.transliterate(address.getWojewodztwo(), citizenship))
-        .gmina(transliterationService.transliterate(address.getCity(), citizenship))
-        .powiat(transliterationService.transliterate(address.getCity(), citizenship))
+        .region(transliterationService.transliterate(address.getRegion(), citizenship))
+        .commune(transliterationService.transliterate(address.getCity(), citizenship))
+        .district(transliterationService.transliterate(address.getCity(), citizenship))
         .city(transliterationService.transliterate(address.getCity(), citizenship))
         .street(transliterationService.transliterate(address.getStreet(), citizenship))
         .house(address.getHouse())
