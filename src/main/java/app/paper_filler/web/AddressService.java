@@ -43,28 +43,28 @@ public class AddressService {
         return filled;
     }
 
-    public Address fillLocalAddress(Address address, Citizenship citizenship) {
+    public Address fillLocalAddress(Address address) {
         Address filled = new Address();
         if(address.getRegion() != null && !address.getRegion().isEmpty()){
-            filled.setRegion(transliterationService.transliterate(address.getRegion(), citizenship));
+            filled.setRegion(transliterationService.transliterate(address.getRegion(), Citizenship.PL));
         }else {
             filled.setRegion("Zachodniopomorskie");
         }
         if(address.getDistrict() != null && !address.getDistrict().isEmpty()){
-            filled.setDistrict(transliterationService.transliterate(address.getDistrict(), citizenship));
+            filled.setDistrict(transliterationService.transliterate(address.getDistrict(), Citizenship.PL));
         }else {
-            filled.setDistrict(transliterationService.transliterate(address.getCity(), citizenship));
+            filled.setDistrict(transliterationService.transliterate(address.getCity(), Citizenship.PL));
         }
         if(address.getCommune() != null && !address.getCommune().isEmpty()){
-            filled.setCommune(transliterationService.transliterate(address.getCommune(), citizenship));
+            filled.setCommune(transliterationService.transliterate(address.getCommune(), Citizenship.PL));
         }else {
-            filled.setCommune(transliterationService.transliterate(address.getCity(), citizenship));
+            filled.setCommune(transliterationService.transliterate(address.getCity(), Citizenship.PL));
         }
-        if(address.getStreet() != null && !address.getStreet().isEmpty()) filled.setStreet(transliterationService.transliterate(address.getStreet(), citizenship));
-        filled.setHouse(address.getHouse());
-        filled.setApartment(address.getApartment());
-        filled.setCity(transliterationService.transliterate(address.getCity(), citizenship));
-        filled.setPostalCode(address.getPostalCode());
+        if(address.getStreet() != null && !address.getStreet().isEmpty()) filled.setStreet(transliterationService.transliterate(address.getStreet(), Citizenship.PL));
+        filled.setHouse(address.getHouse()!= null ? address.getHouse() : "");
+        filled.setApartment(address.getApartment()!= null ? address.getApartment() : "");
+        filled.setCity(transliterationService.transliterate(address.getCity(), Citizenship.PL));
+        filled.setPostalCode(address.getPostalCode()!= null ? address.getPostalCode() : "");
         return filled;
     }
 }

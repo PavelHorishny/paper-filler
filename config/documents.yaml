@@ -1,8 +1,28 @@
 app:
   documents:
-    - { id: karta, template: Informacja (karta) APT.docx, required: true,
+    - { id: karta, template: Informacja (karta) APT.docx, required: false,
         output-name: "{{name}} {{surname}}_karta_{{fulfilmentDate}}" }
-    - { id: oswiadczenie, template: oswiadczenie.docx, required: true,
-        output-name: "{{name}}{{surname}}_oswiadczenie_{{data_dokumentu}}" }
-    - { id: aneks, template: aneks.docx, required: false,
-        output-name: "{{name}}{{surname}}_aneks_{{data_dokumentu}}" }
+    - { id: NIE POB. ZALICZEK, template: NIE POB. ZALICZEK.docx, required: false,
+        output-name: "{{name}}{{surname}}_NIE POB. ZALICZEK_{{data_dokumentu}}" }
+    - { id: Nowa Anketa SP. Z O.O., template: Nowa Anketa SP. Z O.O. (1).docx, required: false,
+        output-name: "{{name}}{{surname}}_Nowa Anketa SP. Z O.O._{{data_dokumentu}}" }
+    - { id: OSWI. ZLEC. NIE STUDENT, template: OSWI. ZLEC. NIE STUDENT (4).docx, required: false,
+        output-name: "{{name}}{{surname}}_OSWI. ZLEC. NIE STUDENT_{{data_dokumentu}}" }
+    - { id: OSWI. ZLEC STUDENT, template: OSWI. ZLEC STUDENT (3).docx, required: false,
+        output-name: "{{name}}{{surname}}_OSWI. ZLEC STUDENT_{{data_dokumentu}}" }
+    - { id: Oświadczenie_o_stanie_zdrowia, template: Oświadczenie_o_stanie_zdrowia_wzór (wersja w jęz. polskim) (1).docx, required: false,
+        output-name: "{{name}}{{surname}}_Oświadczenie_o_stanie_zdrowia_{{data_dokumentu}}" }
+    - { id: oswiadczenie-sp zoo, template: oswiadczenie-sp zoo (6) (1).docx, required: false,
+        output-name: "{{name}}{{surname}}_oswiadczenie-sp zoo_{{data_dokumentu}}" }
+    - { id: Oświadczenie studenta APT, template: Oświadczenie studenta APT.docx, required: false,
+        output-name: "{{name}}{{surname}}_Oświadczenie studenta APT_{{data_dokumentu}}" }
+    - { id: PPK APT, template: PPK APT.docx, required: false,
+        output-name: "{{name}}{{surname}}_PPK APT_{{data_dokumentu}}" }
+    - { id: PPK APT 2, template: PPK APT 2.docx, required: false,
+        output-name: "{{name}}{{surname}}_PPK APT 2_{{data_dokumentu}}" }
+    - { id: Rodo APT, template: Rodo APT.docx, required: false,
+        output-name: "{{name}}{{surname}}_Rodo APT_{{data_dokumentu}}" }
+    - { id: UMOWA ZOO new (2), template: UMOWA ZOO new (2).docx, required: false,
+        output-name: "{{name}}{{surname}}_UMOWA ZOO new (2)_{{data_dokumentu}}" }
+    - { id: Wniosek konto sp. z o.o. sp. kom. (2), template: Wniosek konto sp. z o.o. sp. kom. (2).docx, required: false,
+        output-name: "{{name}}{{surname}}_Wniosek konto sp. z o.o. sp. kom. (2)_{{data_dokumentu}}" }
