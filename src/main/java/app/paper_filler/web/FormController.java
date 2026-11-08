@@ -45,7 +45,8 @@ public class FormController {
     @PostMapping("/")
     public String submitForm(@ModelAttribute ClientForm clientForm) throws IOException {
         clientForm.setFulfilmentDate(LocalDate.now());
-        clientForm.setHomeAddress(addressService.fillAddress(clientForm.getHomeAddress(), clientForm.getCitizenship()));
+        clientForm.setHomeAddress(addressService.fillHomeAddress(clientForm.getHomeAddress(), clientForm.getCitizenship()));
+        clientForm.setHomeAddress(addressService.fillLocalAddress(clientForm.getLocalAddress(), clientForm.getCitizenship()));
         Files.createDirectories(properties.cacheDir());
         jsonMapper.writeValue(formFile().toFile(), clientForm);
         return "redirect:/documents";

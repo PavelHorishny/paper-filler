@@ -21,4 +21,50 @@ public class AddressService {
         .postalCode(address.getPostalCode())
         .build();
     }
+
+    public Address fillHomeAddress(Address address, Citizenship citizenship) {
+        Address filled = new Address();
+        if(address.getRegion() != null && !address.getRegion().isEmpty()) filled.setRegion(transliterationService.transliterate(address.getRegion(), citizenship));
+        if(address.getDistrict() != null && !address.getDistrict().isEmpty()){
+            filled.setDistrict(transliterationService.transliterate(address.getDistrict(), citizenship));
+        }else {
+            filled.setDistrict(transliterationService.transliterate(address.getCity(), citizenship));
+        }
+        if(address.getCommune() != null && !address.getCommune().isEmpty()){
+            filled.setCommune(transliterationService.transliterate(address.getCommune(), citizenship));
+        }else {
+            filled.setCommune(transliterationService.transliterate(address.getCity(), citizenship));
+        }
+        if(address.getStreet() != null && !address.getStreet().isEmpty()) filled.setStreet(transliterationService.transliterate(address.getStreet(), citizenship));
+        filled.setHouse(address.getHouse());
+        filled.setApartment(address.getApartment());
+        filled.setCity(transliterationService.transliterate(address.getCity(), citizenship));
+        filled.setPostalCode(address.getPostalCode());
+        return filled;
+    }
+
+    public Address fillLocalAddress(Address address, Citizenship citizenship) {
+        Address filled = new Address();
+        if(address.getRegion() != null && !address.getRegion().isEmpty()){
+            filled.setRegion(transliterationService.transliterate(address.getRegion(), citizenship));
+        }else {
+            filled.setRegion("Zachodniopomorskie");
+        }
+        if(address.getDistrict() != null && !address.getDistrict().isEmpty()){
+            filled.setDistrict(transliterationService.transliterate(address.getDistrict(), citizenship));
+        }else {
+            filled.setDistrict(transliterationService.transliterate(address.getCity(), citizenship));
+        }
+        if(address.getCommune() != null && !address.getCommune().isEmpty()){
+            filled.setCommune(transliterationService.transliterate(address.getCommune(), citizenship));
+        }else {
+            filled.setCommune(transliterationService.transliterate(address.getCity(), citizenship));
+        }
+        if(address.getStreet() != null && !address.getStreet().isEmpty()) filled.setStreet(transliterationService.transliterate(address.getStreet(), citizenship));
+        filled.setHouse(address.getHouse());
+        filled.setApartment(address.getApartment());
+        filled.setCity(transliterationService.transliterate(address.getCity(), citizenship));
+        filled.setPostalCode(address.getPostalCode());
+        return filled;
+    }
 }
