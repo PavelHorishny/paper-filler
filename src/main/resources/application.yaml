@@ -12,4 +12,4 @@ app:
 server:
   servlet:
     session:
-      tracking-models: cookie
+      tracking-modes: cookie

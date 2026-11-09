@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import app.paper_filler.core.DocumentGenerator;
 import org.springframework.web.bind.annotation.RequestParam;
-import tools.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
@@ -31,7 +29,6 @@ public class FormController {
 
     private final DocumentGenerator generator;
     private final AppProperties properties;
-    private final JsonMapper jsonMapper;
     private final AddressService addressService;
     private final TransliterationService transliterationService;
 

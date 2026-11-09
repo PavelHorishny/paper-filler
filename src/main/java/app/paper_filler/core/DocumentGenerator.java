@@ -36,19 +36,6 @@ public class DocumentGenerator {
 
     private static final DateTimeFormatter MONTH = DateTimeFormatter.ofPattern("MMMM", Locale.forLanguageTag("pl"));
 
-/*    public void generate (ClientForm form, List<String> docIds)  throws IOException {
-
-        Files.createDirectories(properties.outputDir());
-        for (DocumentDef doc : properties.documents()){
-            if(!docIds.contains((doc.id()))) continue;
-
-            Path template = properties.templatesDir().resolve(doc.template());
-            Path output = properties.outputDir().resolve(doc.id() + ".docx");
-            XWPFTemplate.compile(template.toString())
-                    .render(data)
-                    .writeToFile(output.toString());
-        }
-    }*/
     public byte[] generateZip(ClientForm form,List<String> docIds) throws IOException{
         Map<String,Object> data = buildData(form);
 
