@@ -48,7 +48,7 @@ public class AddressService {
         if(address.getRegion() != null && !address.getRegion().isEmpty()){
             filled.setRegion(transliterationService.transliterate(address.getRegion(), Citizenship.PL));
         }else {
-            filled.setRegion("Zachodniopomorskie");
+            filled.setRegion("Zachodniopom.");
         }
         if(address.getDistrict() != null && !address.getDistrict().isEmpty()){
             filled.setDistrict(transliterationService.transliterate(address.getDistrict(), Citizenship.PL));

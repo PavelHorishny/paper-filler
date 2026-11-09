@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -27,6 +28,8 @@ public class DocumentGenerator {
     private final AppProperties properties;
     private final TransliterationService translit;
 
+    private static final DateTimeFormatter MONTH = DateTimeFormatter.ofPattern("MMMM", Locale.forLanguageTag("pl"));
+
     public void generate (ClientForm form, List<String> docIds)  throws IOException {
         Map<String, Object> data = new HashMap<>();
         data.put("name", form.getName());
@@ -34,12 +37,12 @@ public class DocumentGenerator {
         data.put("fulfilmentDate", formatDate(form.getFulfilmentDate()));
         data.put("location", "Szczecin");
         data.put("pesel", form.getPesel());
-        data.put("homeAddress", form.getHomeAddress().toString());
-        data.put("localAddress", form.getLocalAddress().toString());
+        data.put("homeAddress", form.getHomeAddress().shortAddress());
+        data.put("localAddress", form.getLocalAddress().shortAddress());
         data.put("viber", text(form.getViber()));
         data.put("tel", text(form.getPhoneNumber()));
         data.put("birthDate", formatDate(form.getBirthDate()));
-        data.put("birthPlace", text(form.getBirthPlace()));
+        data.put("birthPlace", text(translit.transliterate(form.getBirthPlace(), form.getCitizenship())));
         data.put("label", form.getCitizenship().getCountry());
         data.put("series", form.getPassport().getSeries());
         data.put("number", form.getPassport().getNumber());
@@ -62,7 +65,8 @@ public class DocumentGenerator {
         data.put("taxOffice", form.getTaxOffice().getAddress());
         data.put("account", form.getAccount());
         data.put("schoolName", form.getSchoolName()!= null ? translit.transliterate(form.getSchoolName(),form.getCitizenship()) : "");
-        data.put("month", "listopada");
+        data.put("month", form.getFulfilmentDate().format(MONTH));
+        data.put("stanowisko", "magazynier");
         data.put("bank", "");
 
         Files.createDirectories(properties.outputDir());
