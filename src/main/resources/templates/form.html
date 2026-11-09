@@ -7,7 +7,7 @@
 </head>
 <body>
 <form th:action="@{/}" th:object="${clientForm}" method="post">
-
+<fieldset>
     <p>
         <label>Гражданство</label><br>
         <label th:each="c : ${citizenships}">
@@ -90,26 +90,22 @@
             </label>
         </div>
     </div>
-
+</fieldset>
     <fieldset>
         <legend>Домашний адрес</legend>
 
         <div class="row">
             <div>
-                <label>Страна</label><br>
-                <input type="text" th:field="*{homeAddress.country}">
-            </div>
-            <div>
                 <label>Województwo</label><br>
-                <input type="text" th:field="*{homeAddress.wojewodztwo}">
+                <input type="text" th:field="*{homeAddress.region}">
             </div>
             <div>
                 <label>Powiat</label><br>
-                <input type="text" th:field="*{homeAddress.powiat}">
+                <input type="text" th:field="*{homeAddress.district}">
             </div>
             <div>
                 <label>Gmina</label><br>
-                <input type="text" th:field="*{homeAddress.gmina}">
+                <input type="text" th:field="*{homeAddress.commune}">
             </div>
         </div>
 
@@ -147,20 +143,16 @@
 
         <div class="row">
             <div>
-                <label>Страна</label><br>
-                <input type="text" th:field="*{localAddress.country}">
-            </div>
-            <div>
                 <label>Województwo</label><br>
-                <input type="text" th:field="*{localAddress.wojewodztwo}">
+                <input type="text" th:field="*{localAddress.region}">
             </div>
             <div>
                 <label>Powiat</label><br>
-                <input type="text" th:field="*{localAddress.powiat}">
+                <input type="text" th:field="*{localAddress.district}">
             </div>
             <div>
                 <label>Gmina</label><br>
-                <input type="text" th:field="*{localAddress.gmina}">
+                <input type="text" th:field="*{localAddress.commune}">
             </div>
         </div>
 

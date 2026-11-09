@@ -25,6 +25,7 @@ public class FormController {
     private final DocumentGenerator generator;
     private final AppProperties properties;
     private final JsonMapper jsonMapper;
+    private final AddressService addressService;
 
     private Path formFile(){
         return properties.cacheDir().resolve("last-form.json");
@@ -44,6 +45,8 @@ public class FormController {
     @PostMapping("/")
     public String submitForm(@ModelAttribute ClientForm clientForm) throws IOException {
         clientForm.setFulfilmentDate(LocalDate.now());
+        clientForm.setHomeAddress(addressService.fillHomeAddress(clientForm.getHomeAddress(), clientForm.getCitizenship()));
+        clientForm.setLocalAddress(addressService.fillLocalAddress(clientForm.getLocalAddress()));
         Files.createDirectories(properties.cacheDir());
         jsonMapper.writeValue(formFile().toFile(), clientForm);
         return "redirect:/documents";
