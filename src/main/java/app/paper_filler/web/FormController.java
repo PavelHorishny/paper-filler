@@ -4,6 +4,7 @@ import app.paper_filler.config.AppProperties;
 import app.paper_filler.core.translit.TransliterationService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import tools.jackson.databind.json.JsonMapper;
 
 import java.io.IOException;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -78,13 +81,19 @@ public class FormController {
     }
 
     @PostMapping("/documents")
-    public String generate(@RequestParam(name = "docs", required = false)List<String> docs, HttpSession session) throws IOException{
+    public ResponseEntity<byte[]> generate(@RequestParam(name = "docs", required = false)List<String> docs, HttpSession session) throws IOException{
 
         ClientForm form = (ClientForm) session.getAttribute(FORM);
-        if (form == null) return "redirect:/";
+        if (form == null || docs == null || docs.isEmpty()){
+            return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/documents")).build();
+        }
+        byte [] zip = generator.generateZip(form,docs);
+        String fileName = form.getSurname() + "_" + form.getName() + "_" + LocalDate.now() + ".zip";
 
-        generator.generate(form,docs == null ? List.of() : docs);
-
-        return "redirect:/documents?done";
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        ContentDisposition.attachment().filename(fileName, StandardCharsets.UTF_8).build().toString())
+                .contentType(MediaType.parseMediaType("application/zip"))
+                .body(zip);
     }
 }
