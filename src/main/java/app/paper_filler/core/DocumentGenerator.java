@@ -1,7 +1,7 @@
 package app.paper_filler.core;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +9,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import app.paper_filler.config.AppProperties;
 import app.paper_filler.config.DocumentDef;
@@ -19,10 +23,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
+
 @Service
 @RequiredArgsConstructor
 public class DocumentGenerator {
 
+    private static final Pattern TAG = Pattern.compile("\\{\\{(\\w+)}}");
     private static final DateTimeFormatter DATE = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     private final AppProperties properties;
@@ -30,7 +36,36 @@ public class DocumentGenerator {
 
     private static final DateTimeFormatter MONTH = DateTimeFormatter.ofPattern("MMMM", Locale.forLanguageTag("pl"));
 
-    public void generate (ClientForm form, List<String> docIds)  throws IOException {
+    public byte[] generateZip(ClientForm form,List<String> docIds) throws IOException{
+        Map<String,Object> data = buildData(form);
+
+        ByteArrayOutputStream zipBytes = new ByteArrayOutputStream();
+        try(ZipOutputStream zip = new ZipOutputStream(zipBytes)){
+            for(DocumentDef doc : properties.documents()){
+                if(!docIds.contains(doc.id())) continue;
+
+                Path template = properties.templatesDir().resolve(doc.template());
+                ByteArrayOutputStream docBytes = new ByteArrayOutputStream();
+                try(XWPFTemplate tpl = XWPFTemplate.compile(template.toString()).render(data)){
+                    tpl.write(docBytes);
+                }
+
+                String name = (doc.outputName() !=null ? fileName(doc.outputName(),data) : doc.id()) + ".docx";
+                zip.putNextEntry(new ZipEntry(name));
+                zip.write(docBytes.toByteArray());
+                zip.closeEntry();
+            }
+        }
+        return zipBytes.toByteArray();
+    }
+
+    private String fileName(String pattern, Map<String, Object> data) {
+        String name = TAG.matcher(pattern).replaceAll(m->
+                Matcher.quoteReplacement(String.valueOf(data.getOrDefault(m.group(1),""))));
+        return name.replaceAll("[\\\\/:*?\"<>|]", "_");
+    }
+
+    private Map<String,Object> buildData(ClientForm form){
         Map<String, Object> data = new HashMap<>();
         data.put("name", form.getName());
         data.put("surname", form.getSurname());
@@ -42,7 +77,7 @@ public class DocumentGenerator {
         data.put("viber", text(form.getViber()));
         data.put("tel", text(form.getPhoneNumber()));
         data.put("birthDate", formatDate(form.getBirthDate()));
-        data.put("birthPlace", text(translit.transliterate(form.getBirthPlace(), form.getCitizenship())));
+        data.put("birthPlace", text(form.getBirthPlace()));
         data.put("label", form.getCitizenship().getCountry());
         data.put("series", form.getPassport().getSeries());
         data.put("number", form.getPassport().getNumber());
@@ -64,21 +99,11 @@ public class DocumentGenerator {
         data.put("homeCity", form.getHomeAddress().getCity());
         data.put("taxOffice", form.getTaxOffice().getAddress());
         data.put("account", form.getAccount());
-        data.put("schoolName", form.getSchoolName()!= null ? translit.transliterate(form.getSchoolName(),form.getCitizenship()) : "");
+        data.put("schoolName", text(form.getSchoolName()));
         data.put("month", form.getFulfilmentDate().format(MONTH));
         data.put("stanowisko", "magazynier");
         data.put("bank", "");
-
-        Files.createDirectories(properties.outputDir());
-        for (DocumentDef doc : properties.documents()){
-            if(!docIds.contains((doc.id()))) continue;
-
-            Path template = properties.templatesDir().resolve(doc.template());
-            Path output = properties.outputDir().resolve(doc.id() + ".docx");
-            XWPFTemplate.compile(template.toString())
-                    .render(data)
-                    .writeToFile(output.toString());
-        }
+        return data;
     }
 
     private static String text(String value){

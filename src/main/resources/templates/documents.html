@@ -2,11 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Выбор документов</title>
+    <title>Проверка и документы</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-<h2>Какие документы заполнить?</h2>
 
+<p th:if="${param.done}" class="ok">Документы сформированы ✔</p>
+
+<h2>Проверьте данные</h2>
+<table class="preview">
+    <tr><th>Гражданство</th>  <td th:text="${form.citizenship?.country}"></td></tr>
+    <tr><th>Имя и фамилия</th><td th:text="|${form.name} ${form.surname}|"></td></tr>
+    <tr><th>Дата рождения</th>
+        <td><span th:if="${form.birthDate}" th:text="${#temporals.format(form.birthDate, 'dd.MM.yyyy')}"></span></td></tr>
+    <tr><th>Место рождения</th><td th:text="${form.birthPlace}"></td></tr>
+    <tr><th>PESEL</th>         <td th:text="${form.pesel}"></td></tr>
+    <tr><th>Паспорт</th>       <td th:text="|${form.passport.series} ${form.passport.number}|"></td></tr>
+    <tr><th>Телефон / Viber</th><td th:text="|${form.phoneNumber} / ${form.viber}|"></td></tr>
+    <tr><th>E-mail</th>        <td th:text="${form.email}"></td></tr>
+    <tr><th>Номер счёта</th>   <td th:text="${form.account}"></td></tr>
+    <tr><th>Домашний адрес</th><td th:text="${form.homeAddress.shortAddress()}"></td></tr>
+    <tr><th>Адрес в Польше</th><td th:text="${form.localAddress.shortAddress()}"></td></tr>
+    <tr><th>Urząd skarbowy</th><td th:text="${form.taxOffice?.label}"></td></tr>
+    <tr th:if="${form.student}"><th>Учебное заведение</th><td th:text="${form.schoolName}"></td></tr>
+</table>
+
+<p>
+    <a th:href="@{/edit}">✎ Редактировать</a>
+    &nbsp;|&nbsp;
+    <a th:href="@{/}">Новая форма</a>
+</p>
+
+<h2>Какие документы заполнить?</h2>
 <form th:action="@{/documents}" method="post">
     <p th:each="d : ${documents}">
         <label>
@@ -17,6 +44,5 @@
     <button type="submit">Сформировать</button>
 </form>
 
-<p><a th:href="@{/}">← Назад к форме</a></p>
 </body>
 </html>
