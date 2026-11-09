@@ -7,7 +7,7 @@
 </head>
 <body>
 <form th:action="@{/}" th:object="${clientForm}" method="post">
-<fieldset>
+
     <p>
         <label>Гражданство</label><br>
         <label th:each="c : ${citizenships}">
@@ -90,22 +90,22 @@
             </label>
         </div>
     </div>
-</fieldset>
+
     <fieldset>
         <legend>Домашний адрес</legend>
 
         <div class="row">
             <div>
                 <label>Województwo</label><br>
-                <input type="text" th:field="*{homeAddress.region}">
+                <input type="text" th:field="*{homeAddress.wojewodztwo}">
             </div>
             <div>
                 <label>Powiat</label><br>
-                <input type="text" th:field="*{homeAddress.district}">
+                <input type="text" th:field="*{homeAddress.powiat}">
             </div>
             <div>
                 <label>Gmina</label><br>
-                <input type="text" th:field="*{homeAddress.commune}">
+                <input type="text" th:field="*{homeAddress.gmina}">
             </div>
         </div>
 
@@ -144,15 +144,15 @@
         <div class="row">
             <div>
                 <label>Województwo</label><br>
-                <input type="text" th:field="*{localAddress.region}">
+                <input type="text" th:field="*{localAddress.wojewodztwo}">
             </div>
             <div>
                 <label>Powiat</label><br>
-                <input type="text" th:field="*{localAddress.district}">
+                <input type="text" th:field="*{localAddress.powiat}">
             </div>
             <div>
                 <label>Gmina</label><br>
-                <input type="text" th:field="*{localAddress.commune}">
+                <input type="text" th:field="*{localAddress.gmina}">
             </div>
         </div>
 
