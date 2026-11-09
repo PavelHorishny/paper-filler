@@ -42,7 +42,7 @@ public class DocumentGenerator {
         data.put("viber", text(form.getViber()));
         data.put("tel", text(form.getPhoneNumber()));
         data.put("birthDate", formatDate(form.getBirthDate()));
-        data.put("birthPlace", text(translit.transliterate(form.getBirthPlace(), form.getCitizenship())));
+        data.put("birthPlace", text(form.getBirthPlace()));
         data.put("label", form.getCitizenship().getCountry());
         data.put("series", form.getPassport().getSeries());
         data.put("number", form.getPassport().getNumber());
@@ -64,7 +64,7 @@ public class DocumentGenerator {
         data.put("homeCity", form.getHomeAddress().getCity());
         data.put("taxOffice", form.getTaxOffice().getAddress());
         data.put("account", form.getAccount());
-        data.put("schoolName", form.getSchoolName()!= null ? translit.transliterate(form.getSchoolName(),form.getCitizenship()) : "");
+        data.put("schoolName", text(form.getSchoolName()));
         data.put("month", form.getFulfilmentDate().format(MONTH));
         data.put("stanowisko", "magazynier");
         data.put("bank", "");
