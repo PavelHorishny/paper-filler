@@ -1,15 +1,30 @@
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID:missing}
+            client-secret: ${GOOGLE_CLIENT_SECRET:missing}
+            scope: openid,email,profile
   application:
     name: paper-filler
-
   config:
     import: "file:./config/fields.yaml, file:./config/documents.yaml"
+
 app:
+  allowed-emails: ${ALLOWED_EMAILS:}
   templates-dir: ./templates
   output-dir: ./output
   cache-dir: ./cache
 
 server:
+  forward-headers-strategy: framework
   servlet:
     session:
       tracking-modes: cookie
+      name: PAPERFILLER_SESSION
+
+logging:
+  level: 
+    org.springframework.security: INFO

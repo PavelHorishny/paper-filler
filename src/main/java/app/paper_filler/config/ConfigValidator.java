@@ -5,6 +5,7 @@ package app.paper_filler.config;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,8 @@ public class ConfigValidator implements ApplicationRunner {
 
     private static final Logger log = LoggerFactory.getLogger(ConfigValidator.class);
     private final AppProperties props;
+    @Value("${spring.security.oauth2.client.registration.google.client-secret}")
+    private String secret;
 
     ConfigValidator(AppProperties props) {
         this.props = props;
