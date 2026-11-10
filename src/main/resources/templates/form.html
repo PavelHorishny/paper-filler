@@ -6,6 +6,9 @@
     <title>Paper Filler</title>
 </head>
 <body>
+<form th:action="@{/logout}" method="post" style="text-align: right">
+    <button type="submit">Выйти</button>
+</form>
 <form th:action="@{/}" th:object="${clientForm}" method="post">
     <fieldset>
         <p>
