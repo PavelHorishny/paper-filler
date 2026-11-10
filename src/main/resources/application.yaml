@@ -1,13 +1,4 @@
 spring:
-  server:
-    servlet:
-      session:
-        tracking-modes: cookie
-        cookie:
-          name:PAPERFILLER_SESSION
-  logging:
-    level:
-      org.springframework.security: DEBUG
   security:
     oauth2:
       client:
@@ -18,9 +9,9 @@ spring:
             scope: openid,email,profile
   application:
     name: paper-filler
-
   config:
     import: "file:./config/fields.yaml, file:./config/documents.yaml"
+
 app:
   allowed-emails: ${ALLOWED_EMAILS:}
   templates-dir: ./templates
@@ -28,6 +19,12 @@ app:
   cache-dir: ./cache
 
 server:
+  forward-headers-strategy: framework
   servlet:
     session:
       tracking-modes: cookie
+      name: PAPERFILLER_SESSION
+
+logging:
+  level: 
+    org.springframework.security: DEBUG
