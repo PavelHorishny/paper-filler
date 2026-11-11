@@ -13,6 +13,9 @@ spring:
     import: "file:./config/fields.yaml, file:./config/documents.yaml"
 
 app:
+  drive:
+    refresh-token: ${DRIVE_REFRESH_TOKEN:}
+    root-folder: Paper Filler
   allowed-emails: ${ALLOWED_EMAILS:}
   templates-dir: ./templates
   output-dir: ./output
