@@ -1,0 +1,7 @@
+target/
+.git/
+.idea/
+output/
+cache/
+logs/
+client_secret*.json
