@@ -14,7 +14,9 @@
         <p>
             <label>Гражданство</label><br>
             <label th:each="c : ${citizenships}">
-                <input type="radio" th:field="*{citizenship}" th:value="${c}">
+                <input type="radio" th:field="*{citizenship}" th:value="${c}"
+                    th:data-series = "${c.seriesPattern}"
+                    th:data-number = "${c.numberPattern}">
                 <span th:text="${c.label}"></span>
             </label>
         </p>
@@ -48,19 +50,21 @@
             <div>
                 <label>Серия</label><br>
                 <label>
-                    <input type="text" class="short" th:field="*{passport.series}">
+                    <input type="text" class="short" th:field="*{passport.series}" id="passportSeries">
                 </label>
             </div>
             <div>
                 <label>Номер паспорта</label><br>
                 <label>
-                    <input type="text" th:field="*{passport.number}">
+                    <input type="text" th:field="*{passport.number}" id="passportNumber" inputmode="numeric">
                 </label>
             </div>
             <div>
                 <label>PESEL</label><br>
                 <label>
-                    <input type="text" th:field="*{pesel}">
+                    <input type="text" th:field="*{pesel}"
+                        pattern="\d{11}" maxlength="11" inputmode="numeric"
+                        title="PESEL must contain 11 digits">
                 </label>
             </div>
         </div>
@@ -68,7 +72,9 @@
             <div>
                 <label>Номер счёта</label><br>
                 <label>
-                    <input type="text" class="wide" th:field="*{account}">
+                    <input type="text" class="wide" th:field="*{account}"
+                        pattern="\d{26}" maxlength="26" inputmode="numeric"
+                        title="Must contain exactly 26 digits no spaces no PL letters">
                 </label>
             </div>
         </div>
