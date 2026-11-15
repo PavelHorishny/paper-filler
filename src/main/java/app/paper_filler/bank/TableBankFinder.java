@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MockBankService implements BankFinder{
+public class TableBankFinder implements BankFinder{
 
     private final AppProperties properties;
 
