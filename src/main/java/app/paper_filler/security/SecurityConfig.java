@@ -1,4 +1,4 @@
-package app.paper_filler.secutity;
+package app.paper_filler.security;
 
 import app.paper_filler.config.AppProperties;
 import org.springframework.context.annotation.Bean;
