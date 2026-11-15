@@ -102,3 +102,29 @@ accountInput.addEventListener('input', async () => {
 bankInput.addEventListener('input', () => {
     bankInput.dataset.auto = 'false';                       // пользователь правит сам
 });
+
+const whatsNew = document.getElementById('whatsNew');
+if (whatsNew) {
+    const version = whatsNew.dataset.version;
+
+    let seen = null;
+    try {
+        seen = localStorage.getItem('seenVersion');
+    } catch (e) {
+        // localStorage может быть недоступен (приватный режим) — тогда просто покажем окно
+    }
+
+    if (seen !== version) {
+        whatsNew.showModal();
+    }
+
+    document.getElementById('whatsNewClose')
+        .addEventListener('click', () => whatsNew.close());
+
+    // 'close' срабатывает и от кнопки, и от клавиши Esc
+    whatsNew.addEventListener('close', () => {
+        try {
+            localStorage.setItem('seenVersion', version);
+        } catch (e) {}
+    });
+}

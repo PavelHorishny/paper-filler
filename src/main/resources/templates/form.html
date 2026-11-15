@@ -6,6 +6,13 @@
     <title>Paper Filler</title>
 </head>
 <body>
+<dialog id="whatsNew" th:if="${release != null}" th:data-version="${release.version}">
+    <h2>Что нового в версии <span th:text="${release.version}">0.0.0</span></h2>
+    <ul>
+        <li th:each="note : ${release.notes}" th:text="${note}">пункт</li>
+    </ul>
+    <button type="button" id="whatsNewClose">Понятно</button>
+</dialog>
 <form th:action="@{/logout}" method="post" style="text-align: right">
     <button type="submit">Выйти</button>
 </form>

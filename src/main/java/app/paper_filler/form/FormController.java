@@ -1,6 +1,7 @@
 package app.paper_filler.form;
 
 
+import app.paper_filler.config.AppProperties;
 import app.paper_filler.taxoffice.TaxOffice;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class FormController {
 
     private final FormService formService;
+    private final AppProperties properties;
 
     private static final String FORM = "clientForm";
 
@@ -35,6 +37,7 @@ public class FormController {
         model.addAttribute(FORM,form);
         model.addAttribute("citizenships", Citizenship.values());
         model.addAttribute("taxOffices", TaxOffice.values());
+        model.addAttribute("release", properties.release());
         return "form";
     }
 
