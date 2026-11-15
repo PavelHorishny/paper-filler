@@ -1,8 +1,9 @@
 package app.paper_filler.form;
 
 import app.paper_filler.config.AppProperties;
-import app.paper_filler.translit.TransliterationService;
+import app.paper_filler.documents.DocumentGenerator;
 import app.paper_filler.taxoffice.TaxOffice;
+import app.paper_filler.translit.TransliterationService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
@@ -11,8 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import app.paper_filler.documents.DocumentGenerator;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
