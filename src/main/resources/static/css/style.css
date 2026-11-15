@@ -32,3 +32,6 @@ input:user-invalid {
     border-color: #c00;
     background: #fff5f5;
 }
+
+#whatsNew { max-width: 480px; border: 1px solid #ccc; border-radius: 8px; padding: 1.5rem; }
+#whatsNew::backdrop { background: rgba(0, 0, 0, 0.4); }

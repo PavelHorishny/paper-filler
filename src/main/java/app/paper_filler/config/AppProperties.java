@@ -12,6 +12,8 @@ public record AppProperties(
         Path templatesDir,
         List<DocumentDef> documents,
         List<String> allowedEmails,
-        Map<String,String> banks
+        Map<String,String> banks,
+        Release release
 ) {
+    public record Release(String version, List<String> notes){}
 }

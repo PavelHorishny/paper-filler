@@ -15,6 +15,13 @@ spring:
 app:
   allowed-emails: ${ALLOWED_EMAILS:}
   templates-dir: ./templates
+  release:
+    version: 0.2.0
+    notes:
+      - "Проверка полей прямо в форме: PESEL, номер счёта, паспорт"
+      - "Номер счёта делится на блоки"
+      - "Банк подставляется автоматически по номеру счёта"
+      - "Понятная страница ошибки"
 
 server:
   port: ${PORT:8080}
