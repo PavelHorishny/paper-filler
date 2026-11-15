@@ -37,5 +37,6 @@ public class ClientForm {
     private Address localAddress = new Address();
 
     private String birthPlace;
+    private String bank;
 
 }

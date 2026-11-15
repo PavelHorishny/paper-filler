@@ -100,7 +100,7 @@ public class DocumentGenerator {
         data.put("schoolName", text(form.getSchoolName()));
         data.put("month", form.getFulfilmentDate().format(MONTH));
         data.put("stanowisko", "magazynier");
-        data.put("bank", "");
+        data.put("bank", text(form.getBank()));
         return data;
     }
 
