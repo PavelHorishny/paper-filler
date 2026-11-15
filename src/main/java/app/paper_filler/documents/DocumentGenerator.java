@@ -1,27 +1,25 @@
-package app.paper_filler.core;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
+package app.paper_filler.documents;
 
 import app.paper_filler.config.AppProperties;
-import app.paper_filler.config.DocumentDef;
-import app.paper_filler.core.translit.TransliterationService;
-import app.paper_filler.web.ClientForm;
+import app.paper_filler.form.ClientForm;
+import app.paper_filler.translit.TransliterationService;
 import com.deepoove.poi.XWPFTemplate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 
 @Service

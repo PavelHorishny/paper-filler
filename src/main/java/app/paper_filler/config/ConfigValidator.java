@@ -1,11 +1,9 @@
 package app.paper_filler.config;
 
 
-
-
-import org.slf4j.LoggerFactory;
+import app.paper_filler.documents.DocumentDef;
 import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Value;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -18,14 +16,11 @@ import java.util.List;
 import java.util.Set;
 
 
-
 @Component
 public class ConfigValidator implements ApplicationRunner {
 
     private static final Logger log = LoggerFactory.getLogger(ConfigValidator.class);
     private final AppProperties props;
-    @Value("${spring.security.oauth2.client.registration.google.client-secret}")
-    private String secret;
 
     ConfigValidator(AppProperties props) {
         this.props = props;
@@ -35,15 +30,6 @@ public class ConfigValidator implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         List<String> errors = new ArrayList<>();
 
-        Set<String> fieldIds = new HashSet<>();
-        for (FieldDef f : props.fields()) {
-            if (!fieldIds.add(f.id())) errors.add("Повтор поля: " + f.id());
-        }
-        for (FieldDef f : props.fields()) {
-            if (f.translitTo() != null && !fieldIds.contains(f.translitTo())) {
-                errors.add("Поле " + f.id() + ": translit-to ведёт на неизвестное поле " + f.translitTo());
-            }
-        }
 
         Set<String> docIds = new HashSet<>();
         for (DocumentDef d : props.documents()) {
@@ -58,6 +44,6 @@ public class ConfigValidator implements ApplicationRunner {
             throw new IllegalStateException("Ошибки конфигурации:\n  " + String.join("\n  ", errors));
         }
         long required = props.documents().stream().filter(DocumentDef::required).count();
-        log.info("Loaded {} fields, {} documents ({} required)");
+        log.info("Loaded {} documents ({} required)", props.documents().size(), required);
     }
 }
