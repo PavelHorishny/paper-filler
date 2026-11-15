@@ -22,7 +22,8 @@ server:
   servlet:
     session:
       tracking-modes: cookie
-      name: PAPERFILLER_SESSION
+      cookie:
+        name: PAPERFILLER_SESSION
 
 logging:
   level: 

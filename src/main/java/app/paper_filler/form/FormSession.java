@@ -2,7 +2,7 @@ package app.paper_filler.form;
 
 import jakarta.servlet.http.HttpSession;
 
-public class FormSession {
+public final class FormSession {
     private static final String KEY = "clientForm";
 
     private FormSession(){}
