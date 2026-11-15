@@ -56,8 +56,33 @@ seriesInput.addEventListener('input', ()=>{
     seriesInput.value = seriesInput.value.toUpperCase();
 });
 
+function  formatAccount(digits){
+    let result = digits.slice(0,2);
+    for (let i=2; i<digits.length; i+=4){
+        result+=' '+digits.slice(i,i+4);
+    }
+    return result;
+}
 const accountInput = document.querySelector('input[name="account"]');
 const bankInput = document.getElementById('bank');
+
+accountInput.addEventListener('input', ()=>{
+    const caret = accountInput.selectionStart;
+    const digitsBeforeCaret = accountInput.value.slice(0,caret).replace(/\D/g,'').length;
+
+    const digits =accountInput.value.replace(/\D/g,'').slice(0,26);
+    accountInput.value = formatAccount(digits);
+
+    let pos = 0;
+    let seen = 0;
+    while(pos<accountInput.value.length && seen<digitsBeforeCaret){
+        if(/\d/.test(accountInput.value[pos])) seen++;
+        pos++;
+    }
+    accountInput.setSelectionRange(pos,pos);
+});
+
+accountInput.value = formatAccount(accountInput.value.replace(/\D/g,''));
 
 accountInput.addEventListener('input', async () => {
     const digits = accountInput.value.replace(/\s/g, '');
