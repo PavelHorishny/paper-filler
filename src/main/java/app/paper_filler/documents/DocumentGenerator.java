@@ -95,7 +95,7 @@ public class DocumentGenerator {
         data.put("homePostal", form.getHomeAddress().getPostalCode());
         data.put("locCity", form.getLocalAddress().getCity());
         data.put("homeCity", form.getHomeAddress().getCity());
-        data.put("taxOffice", form.getTaxOffice().getAddress());
+        data.put("taxOffice", form.getTaxOffice() != null ? form.getTaxOffice().getAddress() : "");
         data.put("account", formatAccount(form.getAccount()));
         data.put("schoolName", text(form.getSchoolName()));
         data.put("month", form.getFulfilmentDate().format(MONTH));
