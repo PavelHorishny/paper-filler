@@ -8,7 +8,7 @@ import java.util.List;
 
 @ConfigurationProperties(prefix = "app")
 public record AppProperties(
-        Path templatesDir, Path outputDir, Path cacheDir,
+        Path templatesDir,
         List<DocumentDef> documents,
         List<String> allowedEmails
 ) {

@@ -15,8 +15,6 @@ spring:
 app:
   allowed-emails: ${ALLOWED_EMAILS:}
   templates-dir: ./templates
-  output-dir: ./output
-  cache-dir: ./cache
 
 server:
   port: ${PORT:8080}
