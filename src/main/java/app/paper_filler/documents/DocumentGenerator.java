@@ -4,7 +4,9 @@ import app.paper_filler.config.AppProperties;
 import app.paper_filler.form.ClientForm;
 import app.paper_filler.translit.TransliterationService;
 import com.deepoove.poi.XWPFTemplate;
+import com.deepoove.poi.xwpf.NiceXWPFDocument;
 import lombok.RequiredArgsConstructor;
+import org.apache.poi.xwpf.usermodel.BreakType;
 import org.springframework.stereotype.Service;
 
 import java.io.ByteArrayOutputStream;
@@ -12,10 +14,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
@@ -30,7 +29,6 @@ public class DocumentGenerator {
     private static final DateTimeFormatter DATE = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     private final AppProperties properties;
-    private final TransliterationService translit;
 
     private static final DateTimeFormatter MONTH = DateTimeFormatter.ofPattern("MMMM", Locale.forLanguageTag("pl"));
 
@@ -55,6 +53,38 @@ public class DocumentGenerator {
             }
         }
         return zipBytes.toByteArray();
+    }
+
+    public byte [] generateMerged(ClientForm form, List<String> docIds) throws Exception {
+        Map<String,Object> data = buildData(form);
+        List<XWPFTemplate> opened = new ArrayList<>();
+        NiceXWPFDocument result = null;
+
+        try{
+            for(DocumentDef doc : properties.documents()){
+                if(!docIds.contains(doc.id())) continue;
+
+                Path template = properties.templatesDir().resolve(doc.template());
+                XWPFTemplate tpl = XWPFTemplate.compile(template.toString()).render(data);
+                opened.add(tpl);
+                NiceXWPFDocument part = tpl.getXWPFDocument();
+
+                if(result == null){
+                    result = part;
+                }else{
+                    result.createParagraph().createRun().addBreak(BreakType.PAGE);
+                    result = result.merge(part);
+                }
+            }
+
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            result.write(out);
+            return out.toByteArray();
+        }finally {
+            for(XWPFTemplate tpl : opened){
+                tpl.close();
+            }
+        }
     }
 
     private String fileName(String pattern, Map<String, Object> data) {

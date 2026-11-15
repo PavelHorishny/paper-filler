@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
@@ -35,19 +34,37 @@ public class DocumentController {
     }
 
     @PostMapping("/documents")
-    public ResponseEntity<byte[]> generate(@RequestParam(name = "docs", required = false) List<String> docs, HttpSession session) throws IOException {
+    public ResponseEntity<byte[]> generate(@RequestParam(name = "docs", required = false) List<String> docs,
+                                           @RequestParam(defaultValue = "zip") String action,
+                                           HttpSession session) throws Exception {
 
         ClientForm form = FormSession.get(session);
         if (form == null || docs == null || docs.isEmpty()){
             return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/documents")).build();
         }
-        byte [] zip = generator.generateZip(form,docs);
+
+        String baseName = form.getSurname() + "_" + form.getName() + "_" + LocalDate.now();
+
+        if("print".equals(action)) {
+            return download(generator.generateMerged(form,docs),baseName + ".docx",
+                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+        }
+        return download(generator.generateZip(form,docs), baseName + ".zip", "application/zip");
+ /*       byte [] zip = generator.generateZip(form,docs);
         String fileName = form.getSurname() + "_" + form.getName() + "_" + LocalDate.now() + ".zip";
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION,
                         ContentDisposition.attachment().filename(fileName, StandardCharsets.UTF_8).build().toString())
                 .contentType(MediaType.parseMediaType("application/zip"))
-                .body(zip);
+                .body(zip);*/
+    }
+
+    private ResponseEntity<byte[]> download(byte[] content, String fileName, String mediaType){
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        ContentDisposition.attachment().filename(fileName,StandardCharsets.UTF_8).build().toString())
+                .contentType(MediaType.parseMediaType(mediaType))
+                .body(content);
     }
 }
