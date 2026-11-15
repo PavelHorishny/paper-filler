@@ -73,8 +73,8 @@
                 <label>Номер счёта</label><br>
                 <label>
                     <input type="text" class="wide" th:field="*{account}"
-                        pattern="\d{2}(\d{4}){6}" maxlength="32" inputmode="numeric"
-                        title="Must contain exactly 26 digits no spaces no PL letters">
+                        pattern="\d{2}( \d{4}){6}" maxlength="32" inputmode="numeric"
+                        title="26 digits, e.g. 61 1090 1014 0000 0712 1981 2874">
                 </label>
             </div>
             <div>
