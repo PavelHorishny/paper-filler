@@ -1,5 +1,6 @@
-package app.paper_filler.config;
+package app.paper_filler.secutity;
 
+import app.paper_filler.config.AppProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

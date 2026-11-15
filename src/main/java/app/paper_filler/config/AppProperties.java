@@ -1,5 +1,6 @@
 package app.paper_filler.config;
 
+import app.paper_filler.documents.DocumentDef;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.nio.file.Path;

@@ -1,4 +1,4 @@
-package app.paper_filler.core.translit;
+package app.paper_filler.translit;
 
 public interface Transliterator {
     String transliterate(String text);

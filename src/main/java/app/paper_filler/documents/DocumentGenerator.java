@@ -1,4 +1,4 @@
-package app.paper_filler.core;
+package app.paper_filler.documents;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -15,9 +15,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import app.paper_filler.config.AppProperties;
-import app.paper_filler.config.DocumentDef;
-import app.paper_filler.core.translit.TransliterationService;
-import app.paper_filler.web.ClientForm;
+import app.paper_filler.translit.TransliterationService;
+import app.paper_filler.form.ClientForm;
 import com.deepoove.poi.XWPFTemplate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

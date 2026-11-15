@@ -1,6 +1,6 @@
-package app.paper_filler.web;
+package app.paper_filler.form;
 
-import app.paper_filler.core.translit.TransliterationService;
+import app.paper_filler.translit.TransliterationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

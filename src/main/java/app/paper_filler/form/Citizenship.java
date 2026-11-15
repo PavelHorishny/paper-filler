@@ -1,4 +1,4 @@
-package app.paper_filler.web;
+package app.paper_filler.form;
 
 import lombok.Getter;
 

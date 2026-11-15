@@ -1,7 +1,7 @@
 package app.paper_filler;
 
 import app.paper_filler.config.AppProperties;
-import app.paper_filler.config.DocumentDef;
+import app.paper_filler.documents.DocumentDef;
 import app.paper_filler.config.FieldDef;
 import app.paper_filler.config.FieldType;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
-package app.paper_filler.core.translit;
+package app.paper_filler.translit;
 
-import app.paper_filler.web.Citizenship;
+import app.paper_filler.form.Citizenship;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

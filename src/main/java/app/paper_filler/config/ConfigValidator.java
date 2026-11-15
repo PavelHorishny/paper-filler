@@ -3,6 +3,7 @@ package app.paper_filler.config;
 
 
 
+import app.paper_filler.documents.DocumentDef;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
