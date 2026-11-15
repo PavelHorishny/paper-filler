@@ -1,9 +1,7 @@
 package app.paper_filler.form;
 
-import app.paper_filler.config.AppProperties;
-import app.paper_filler.documents.DocumentGenerator;
+
 import app.paper_filler.taxoffice.TaxOffice;
-import app.paper_filler.translit.TransliterationService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
@@ -14,8 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
-import java.nio.file.Path;
-
 
 @Controller
 @RequiredArgsConstructor
@@ -24,13 +20,7 @@ public class FormController {
     private final FormService formService;
 
     private static final String FORM = "clientForm";
-    private final AppProperties properties;
 
-
-
-    private Path formFile(){
-        return properties.cacheDir().resolve("last-form.json");
-    }
 
     @GetMapping ("/")
     public String newForm(Model model, HttpSession session){
