@@ -96,7 +96,7 @@ public class DocumentGenerator {
         data.put("locCity", form.getLocalAddress().getCity());
         data.put("homeCity", form.getHomeAddress().getCity());
         data.put("taxOffice", form.getTaxOffice().getAddress());
-        data.put("account", form.getAccount());
+        data.put("account", formatAccount(form.getAccount()));
         data.put("schoolName", text(form.getSchoolName()));
         data.put("month", form.getFulfilmentDate().format(MONTH));
         data.put("stanowisko", "magazynier");
@@ -114,5 +114,13 @@ public class DocumentGenerator {
 
     private static String fullName(ClientForm form){
         return (text(form.getName()) + " " + text(form.getSurname())).strip();
+    }
+    private static String formatAccount(String digits) {
+        if(digits == null || digits.length()<2) return text(digits);
+        StringBuilder result = new StringBuilder(digits.substring(0,2));
+        for(int i = 2; i < digits.length(); i+=4){
+            result.append(' ').append(digits,i,Math.min(i+4,digits.length()));
+        }
+        return result.toString();
     }
 }

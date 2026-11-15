@@ -21,6 +21,9 @@ public class FormService {
         form.setSchoolName(transliterationService.transliterate(form.getSchoolName(),c));
         form.setHomeAddress(addressService.fillHomeAddress(form.getHomeAddress(),c));
         form.setLocalAddress(addressService.fillLocalAddress(form.getLocalAddress()));
+        if(form.getAccount() != null){
+            form.setAccount(form.getAccount().replaceAll("\\D",""));
+        }
         if(form.getBank() == null || form.getBank().isBlank()){
             form.setBank(bankFinder.findBank(form.getAccount()));
         }
