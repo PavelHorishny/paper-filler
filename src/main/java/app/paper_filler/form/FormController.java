@@ -12,25 +12,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.IOException;
-import java.net.URI;
-import java.nio.charset.StandardCharsets;
+
 import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.List;
+
 
 @Controller
 @RequiredArgsConstructor
 public class FormController {
 
-    private static final String FORM = "clientForm";
+    private final FormService formService;
 
-    private final DocumentGenerator generator;
+    private static final String FORM = "clientForm";
     private final AppProperties properties;
-    private final AddressService addressService;
-    private final TransliterationService transliterationService;
+
+
 
     private Path formFile(){
         return properties.cacheDir().resolve("last-form.json");
@@ -38,13 +34,13 @@ public class FormController {
 
     @GetMapping ("/")
     public String newForm(Model model, HttpSession session){
-        session.removeAttribute(FORM);
+        FormSession.clear(session);
         return showForm(new ClientForm(), model);
     }
 
     @GetMapping("/edit")
     public String editForm(Model model, HttpSession session){
-        ClientForm saved = (ClientForm) session.getAttribute(FORM);
+        ClientForm saved = FormSession.get(session);
         if(saved == null) return "redirect:/";
         return showForm(saved,model);
     }
@@ -57,40 +53,8 @@ public class FormController {
 
     @PostMapping("/")
     public String submitForm(@ModelAttribute ClientForm clientForm, HttpSession session) {
-        Citizenship c = clientForm.getCitizenship();
-        clientForm.setFulfilmentDate(LocalDate.now());
-        clientForm.setBirthPlace(transliterationService.transliterate(clientForm.getBirthPlace(),c));
-        clientForm.setSchoolName(transliterationService.transliterate(clientForm.getSchoolName(),c));
-        clientForm.setHomeAddress(addressService.fillHomeAddress(clientForm.getHomeAddress(), c));
-        clientForm.setLocalAddress(addressService.fillLocalAddress(clientForm.getLocalAddress()));
-
-        session.setAttribute(FORM,clientForm);
+        formService.prepare(clientForm);
+        FormSession.save(session,clientForm);
         return "redirect:/documents";
-    }
-
-    @GetMapping("/documents")
-    public String showDocuments(Model model, HttpSession session) {
-        ClientForm form = (ClientForm) session.getAttribute(FORM);
-        if(form == null) return "redirect:/";
-        model.addAttribute("form",form);
-        model.addAttribute("documents", properties.documents());
-        return "documents";
-    }
-
-    @PostMapping("/documents")
-    public ResponseEntity<byte[]> generate(@RequestParam(name = "docs", required = false)List<String> docs, HttpSession session) throws IOException{
-
-        ClientForm form = (ClientForm) session.getAttribute(FORM);
-        if (form == null || docs == null || docs.isEmpty()){
-            return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/documents")).build();
-        }
-        byte [] zip = generator.generateZip(form,docs);
-        String fileName = form.getSurname() + "_" + form.getName() + "_" + LocalDate.now() + ".zip";
-
-        return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION,
-                        ContentDisposition.attachment().filename(fileName, StandardCharsets.UTF_8).build().toString())
-                .contentType(MediaType.parseMediaType("application/zip"))
-                .body(zip);
     }
 }
