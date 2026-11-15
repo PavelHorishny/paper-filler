@@ -23,3 +23,35 @@ function update() {
 birthDate.addEventListener('change', update);
 studentBox.addEventListener('change', update);
 update();
+
+const seriesInput = document.getElementById('passportSeries');
+const numberInput = document.getElementById('passportNumber');
+const citizenshipRadios = document.querySelectorAll('input[name="citizenship"]');
+
+function lengthFrom(pattern){
+    const match = pattern.match(/\{(\d+)\}/);
+    return match ? Number(match[1]):null;
+}
+function applyPassportRules(radio){
+    const seriesPattern = radio.dataset.series;
+    const numberPattern = radio.dataset.number;
+
+    seriesInput.pattern = seriesPattern;
+    numberInput.pattern = numberPattern;
+
+    const letters = lengthFrom(seriesPattern);
+    const digits = lengthFrom(numberPattern);
+    seriesInput.maxLength = letters;
+    numberInput.maxLength = digits;
+    seriesInput.title = 'Серия: ' + letters+ ' латиница';
+    numberInput.title = 'Номер: ' + digits + ' цифр';
+}
+
+citizenshipRadios.forEach(radio=>{
+    radio.addEventListener('change', ()=>applyPassportRules(radio));
+    if(radio.checked) applyPassportRules(radio);
+});
+
+seriesInput.addEventListener('input', ()=>{
+    seriesInput.value = seriesInput.value.toUpperCase();
+});

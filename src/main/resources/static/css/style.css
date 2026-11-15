@@ -28,3 +28,7 @@
 .preview th { text-align: left; padding: 4px 16px 4px 0; color: #555; font-weight: normal; }
 .preview td { padding: 4px 0; }
 .ok { color: #2a7; font-weight: bold; }
+input:user-invalid {
+    border-color: #c00;
+    background: #fff5f5;
+}
