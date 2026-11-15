@@ -29,7 +29,7 @@ const numberInput = document.getElementById('passportNumber');
 const citizenshipRadios = document.querySelectorAll('input[name="citizenship"]');
 
 function lengthFrom(pattern){
-    const match = pattern.match(/\{\d+)\}/);
+    const match = pattern.match(/\{(\d+)\}/);
     return match ? Number(match[1]):null;
 }
 function applyPassportRules(radio){
@@ -41,7 +41,8 @@ function applyPassportRules(radio){
 
     const letters = lengthFrom(seriesPattern);
     const digits = lengthFrom(numberPattern);
-
+    seriesInput.maxLength = letters;
+    numberInput.maxLength = digits;
     seriesInput.title = 'Серия: ' + letters+ ' латиница';
     numberInput.title = 'Номер: ' + digits + ' цифр';
 }
