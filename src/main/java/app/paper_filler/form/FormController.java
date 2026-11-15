@@ -20,6 +20,11 @@ public class FormController {
     private static final String FORM = "clientForm";
 
 
+    @GetMapping("/boom")
+    public String boom() {
+        throw new IllegalStateException("тест");
+    }
+
     @GetMapping ("/")
     public String newForm(Model model, HttpSession session){
         FormSession.clear(session);
