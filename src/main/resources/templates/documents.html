@@ -21,6 +21,7 @@
     <tr><th>Телефон / Viber</th><td th:text="|${form.phoneNumber} / ${form.viber}|"></td></tr>
     <tr><th>E-mail</th>        <td th:text="${form.email}"></td></tr>
     <tr><th>Номер счёта</th>   <td th:text="${form.account}"></td></tr>
+    <tr><th>Банк</th><td th:text="${form.bank}"></td></tr>
     <tr><th>Домашний адрес</th><td th:text="${form.homeAddress.shortAddress()}"></td></tr>
     <tr><th>Адрес в Польше</th><td th:text="${form.localAddress.shortAddress()}"></td></tr>
     <tr><th>Urząd skarbowy</th><td th:text="${form.taxOffice?.label}"></td></tr>

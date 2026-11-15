@@ -55,3 +55,25 @@ citizenshipRadios.forEach(radio=>{
 seriesInput.addEventListener('input', ()=>{
     seriesInput.value = seriesInput.value.toUpperCase();
 });
+
+const accountInput = document.querySelector('input[name="account"]');
+const bankInput = document.getElementById('bank');
+
+accountInput.addEventListener('input', async () => {
+    const digits = accountInput.value.replace(/\s/g, '');
+    if (digits.length !== 26) return;                       // ждём полный номер
+
+    const typedByHand = bankInput.value.trim() !== '' && bankInput.dataset.auto !== 'true';
+    if (typedByHand) return;                                // банк вписан руками — не трогаем
+
+    const response = await fetch('/api/bank?account=' + digits);
+    const name = await response.text();
+    if (name) {
+        bankInput.value = name;
+        bankInput.dataset.auto = 'true';                    // запомнили: заполнено автоматически
+    }
+});
+
+bankInput.addEventListener('input', () => {
+    bankInput.dataset.auto = 'false';                       // пользователь правит сам
+});
