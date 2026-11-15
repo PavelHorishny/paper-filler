@@ -44,6 +44,6 @@ public class ConfigValidator implements ApplicationRunner {
             throw new IllegalStateException("Ошибки конфигурации:\n  " + String.join("\n  ", errors));
         }
         long required = props.documents().stream().filter(DocumentDef::required).count();
-        log.info("Loaded  {} documents ({} required)", props.documents().size(), required);
+        log.info("Loaded {} documents ({} required)", props.documents().size(), required);
     }
 }
