@@ -7,7 +7,7 @@
 </head>
 <body>
 <dialog id="whatsNew" th:if="${release != null}" th:data-version="${release.version}">
-    <h2>И так, что нового для Синички в этой версии <span th:text="${release.version}">0.0.0</span></h2>
+    <h2>Что нового в версии <span th:text="${release.version}">0.0.0</span></h2>
     <ul>
         <li th:each="note : ${release.notes}" th:text="${note}">пункт</li>
     </ul>

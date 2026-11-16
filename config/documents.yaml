@@ -1,40 +1,40 @@
 app:
   documents:
-    - { id: Anketa-apt, template: APT/Anketa_APT.docx, required: true,
+    - { id: Anketa-apt, company: APT, template: APT/Anketa_APT.docx, required: true,
         output-name: "{{name}}_{{surname}}_Anketa_APT_{{fulfilmentDate}}" }
-    - { id: Informacja-apt, template: APT/Informacja_APT.docx, required: true,
+    - { id: Informacja-apt, company: APT, template: APT/Informacja_APT.docx, required: true,
         output-name: "{{name}}_{{surname}}_Informacja_APT_{{fulfilmentDate}}" }
-    - { id: Konto-apt, template: APT/Konto_APT.docx, required: false,
+    - { id: Konto-apt, company: APT, template: APT/Konto_APT.docx, required: false,
         output-name: "{{name}}_{{surname}}_Konto_APT_{{fulfilmentDate}}" }
-    - { id: Nie-pobieranie-zaliczek-apt, template: APT/NiePobZal_APT.docx, required: true,
+    - { id: Nie-pobieranie-zaliczek-apt, company: APT, template: APT/NiePobZal_APT.docx, required: true,
         output-name: "{{name}}_{{surname}}_zaliczek_APT_{{fulfilmentDate}}" }
-    - { id: Oswiadczenie-apt, template: APT/oswiadczenie_APT.docx, required: true,
+    - { id: Oswiadczenie-apt, company: APT, template: APT/oswiadczenie_APT.docx, required: true,
         output-name: "{{name}}_{{surname}}_oswiadczenie_APT_{{fulfilmentDate}}" }
-    - { id: PPK-apt, template: APT/PPK_APT.docx, required: true,
+    - { id: PPK-apt, company: APT, template: APT/PPK_APT.docx, required: true,
         output-name: "{{name}}_{{surname}}_PPK_APT_{{fulfilmentDate}}" }
-    - { id: PPK2-apt, template: APT/PPK2_APT.docx, required: true,
+    - { id: PPK2-apt, company: APT, template: APT/PPK2_APT.docx, required: true,
         output-name: "{{name}}_{{surname}}_PPK2_APT_{{fulfilmentDate}}" }
-    - { id: Rodo-apt, template: APT/Rodo_APT.docx, required: true,
+    - { id: Rodo-apt, company: APT, template: APT/Rodo_APT.docx, required: true,
         output-name: "{{name}}_{{surname}}_Rodo_APT_{{fulfilmentDate}}" }
-    - { id: Student-apt, template: APT/Student_APT.docx, required: false,
+    - { id: Student-apt, company: APT, template: APT/Student_APT.docx, required: false,
         output-name: "{{name}}_{{surname}}_Student_APT_{{fulfilmentDate}}" }
-    - { id: Anketa-out, template: OUT/Anketa_OUT.docx, required: true,
+    - { id: Anketa-out, company: OUT, template: OUT/Anketa_OUT.docx, required: true,
         output-name: "{{name}}_{{surname}}_Anketa_OUT_{{fulfilmentDate}}" }
-    - { id: Informacja-out, template: OUT/Informacja_OUT.docx, required: true,
+    - { id: Informacja-out, company: OUT, template: OUT/Informacja_OUT.docx, required: true,
         output-name: "{{name}}_{{surname}}_Informacja_OUT_{{fulfilmentDate}}" }
-    - { id: Konto-out, template: OUT/Konto_OUT.docx, required: false,
+    - { id: Konto-out, company: OUT, template: OUT/Konto_OUT.docx, required: false,
         output-name: "{{name}}_{{surname}}_Konto_OUT_{{fulfilmentDate}}" }
-    - { id: Nie-pobieranie-zaliczek-out, template: OUT/NiePobZal_OUT.docx, required: true,
+    - { id: Nie-pobieranie-zaliczek-out, company: OUT, template: OUT/NiePobZal_OUT.docx, required: true,
         output-name: "{{name}}_{{surname}}_zaliczek_OUT_{{fulfilmentDate}}" }
-    - { id: Oswiadczenie-out, template: OUT/oswiadczenie_OUT.docx, required: true,
+    - { id: Oswiadczenie-out, company: OUT, template: OUT/oswiadczenie_OUT.docx, required: true,
         output-name: "{{name}}_{{surname}}_oswiadczenie_OUT_{{fulfilmentDate}}" }
-    - { id: PPK-out, template: OUT/PPK_OUT.docx, required: true,
+    - { id: PPK-out, company: OUT, template: OUT/PPK_OUT.docx, required: true,
         output-name: "{{name}}_{{surname}}_PPK_OUT_{{fulfilmentDate}}" }
-    - { id: PPK2-out, template: OUT/PPK2_OUT.docx, required: true,
+    - { id: PPK2-out, company: OUT, template: OUT/PPK2_OUT.docx, required: true,
         output-name: "{{name}}_{{surname}}_PPK2_OUT_{{fulfilmentDate}}" }
-    - { id: Rodo-out, template: OUT/Rodo_OUT.docx, required: true,
+    - { id: Rodo-out, company: OUT, template: OUT/Rodo_OUT.docx, required: true,
         output-name: "{{name}}_{{surname}}_Rodo_OUT_{{fulfilmentDate}}" }
-    - { id: Student-out, template: OUT/Student_OUT.docx, required: false,
+    - { id: Student-out, company: OUT, template: OUT/Student_OUT.docx, required: false,
         output-name: "{{name}}_{{surname}}_Student_OUT_{{fulfilmentDate}}" }
     - { id: Stan-zdrowia, template: stan_zdrowia.docx, required: true,
         output-name: "{{name}}_{{surname}}_stan_zdrowia_{{fulfilmentDate}}" }

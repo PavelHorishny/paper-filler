@@ -1,4 +1,4 @@
 package app.paper_filler.documents;
 
-public record DocumentDef(String id,String template,String outputName, boolean required) {
+public record DocumentDef(String id,String company, String template,String outputName, boolean required) {
 }
