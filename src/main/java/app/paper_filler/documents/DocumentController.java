@@ -44,8 +44,8 @@ public class DocumentController {
                 company.computeIfAbsent(d.company(),k->new ArrayList<>()).add(d);
             }
         }
-        model.addAttribute("common", common);
-        model.addAttribute("company", company);
+        model.addAttribute("commonDocs", common);
+        model.addAttribute("companyDocs", company);
         return "documents";
     }
 
