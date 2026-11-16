@@ -1,26 +1,47 @@
 app:
   documents:
-    - { id: karta, template: Informacja (karta) APT.docx, required: false,
-        output-name: "{{name}} {{surname}}_karta_{{fulfilmentDate}}" }
-    - { id: NIE POB. ZALICZEK, template: NIE POB. ZALICZEK.docx, required: false,
-        output-name: "{{name}}{{surname}}_NIE POB. ZALICZEK_{{fulfilmentDate}}" }
-    - { id: Nowa Anketa SP. Z O.O., template: Nowa Anketa SP. Z O.O. (1).docx, required: false,
-        output-name: "{{name}}{{surname}}_Nowa Anketa SP. Z O.O._{{fulfilmentDate}}" }
-    - { id: OSWI. ZLEC. NIE STUDENT, template: OSWI. ZLEC. NIE STUDENT (4).docx, required: false,
-        output-name: "{{name}}{{surname}}_OSWI. ZLEC. NIE STUDENT_{{fulfilmentDate}}" }
-    - { id: Oświadczenie_o_stanie_zdrowia, template: Oświadczenie_o_stanie_zdrowia_wzór (wersja w jęz. polskim) (1).docx, required: false,
-        output-name: "{{name}}{{surname}}_Oświadczenie_o_stanie_zdrowia_{{fulfilmentDate}}" }
-    - { id: oswiadczenie-sp zoo, template: oswiadczenie-sp zoo (6) (1).docx, required: false,
-        output-name: "{{name}}{{surname}}_oswiadczenie-sp zoo_{{fulfilmentDate}}" }
-    - { id: Oświadczenie studenta APT, template: Oświadczenie studenta APT.docx, required: false,
-        output-name: "{{name}}{{surname}}_Oświadczenie studenta APT_{{fulfilmentDate}}" }
-    - { id: PPK APT, template: PPK APT.docx, required: false,
-        output-name: "{{name}}{{surname}}_PPK APT_{{fulfilmentDate}}" }
-    - { id: PPK APT 2, template: PPK APT 2.docx, required: false,
-        output-name: "{{name}}{{surname}}_PPK APT 2_{{fulfilmentDate}}" }
-    - { id: Rodo APT, template: Rodo APT.docx, required: false,
-        output-name: "{{name}}{{surname}}_Rodo APT_{{fulfilmentDate}}" }
-    - { id: UMOWA ZOO new (2), template: UMOWA ZOO new (2).docx, required: false,
-        output-name: "{{name}}{{surname}}_UMOWA ZOO new (2)_{{fulfilmentDate}}" }
-    - { id: Wniosek konto sp. z o.o. sp. kom. (2), template: Wniosek konto sp. z o.o. sp. kom. (2).docx, required: false,
-        output-name: "{{name}}{{surname}}_Wniosek konto sp. z o.o. sp. kom. (2)_{{fulfilmentDate}}" }
+    - { id: Anketa-apt, template: APT/Anketa_APT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_Anketa_APT_{{fulfilmentDate}}" }
+    - { id: Informacja-apt, template: APT/Informacja_APT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_Informacja_APT_{{fulfilmentDate}}" }
+    - { id: Konto-apt, template: APT/Konto_APT.docx, required: false,
+        output-name: "{{name}}_{{surname}}_Konto_APT_{{fulfilmentDate}}" }
+    - { id: Nie-pobieranie-zaliczek-apt, template: APT/NiePobZal_APT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_zaliczek_APT_{{fulfilmentDate}}" }
+    - { id: Oswiadczenie-apt, template: APT/oswiadczenie_APT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_oswiadczenie_APT_{{fulfilmentDate}}" }
+    - { id: PPK-apt, template: APT/PPK_APT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_PPK_APT_{{fulfilmentDate}}" }
+    - { id: PPK2-apt, template: APT/PPK2_APT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_PPK2_APT_{{fulfilmentDate}}" }
+    - { id: Rodo-apt, template: APT/Rodo_APT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_Rodo_APT_{{fulfilmentDate}}" }
+    - { id: Student-apt, template: APT/Student_APT.docx, required: false,
+        output-name: "{{name}}_{{surname}}_Student_APT_{{fulfilmentDate}}" }
+    - { id: Anketa-out, template: OUT/Anketa_OUT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_Anketa_OUT_{{fulfilmentDate}}" }
+    - { id: Informacja-out, template: OUT/Informacja_OUT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_Informacja_OUT_{{fulfilmentDate}}" }
+    - { id: Konto-out, template: OUT/Konto_OUT.docx, required: false,
+        output-name: "{{name}}_{{surname}}_Konto_OUT_{{fulfilmentDate}}" }
+    - { id: Nie-pobieranie-zaliczek-out, template: OUT/NiePobZal_OUT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_zaliczek_OUT_{{fulfilmentDate}}" }
+    - { id: Oswiadczenie-out, template: OUT/oswiadczenie_OUT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_oswiadczenie_OUT_{{fulfilmentDate}}" }
+    - { id: PPK-out, template: OUT/PPK_OUT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_PPK_OUT_{{fulfilmentDate}}" }
+    - { id: PPK2-out, template: OUT/PPK2_OUT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_PPK2_OUT_{{fulfilmentDate}}" }
+    - { id: Rodo-out, template: OUT/Rodo_OUT.docx, required: true,
+        output-name: "{{name}}_{{surname}}_Rodo_OUT_{{fulfilmentDate}}" }
+    - { id: Student-out, template: OUT/Student_OUT.docx, required: false,
+        output-name: "{{name}}_{{surname}}_Student_OUT_{{fulfilmentDate}}" }
+    - { id: Stan-zdrowia, template: stan_zdrowia.docx, required: true,
+        output-name: "{{name}}_{{surname}}_stan_zdrowia_{{fulfilmentDate}}" }
+    - { id: Zleceniobiorcy, template: ZLECENIOBIORCY.docx, required: true,
+        output-name: "{{name}}_{{surname}}_zleceniobiorcy_{{fulfilmentDate}}" }
+    - { id: Pelnomocnictwo, template: Pelnomocnictwo.docx, required: true,
+        output-name: "{{name}}_{{surname}}_Pelnomocnictwo_{{fulfilmentDate}}" }
+    - { id: UMOWA ZOO new (2), template: UMOWA ZOO new (2).docx, required: true,
+        output-name: "{{name}}_{{surname}}_UMOWA ZOO new (2)_{{fulfilmentDate}}" }
+

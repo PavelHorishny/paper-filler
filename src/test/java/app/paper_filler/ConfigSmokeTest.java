@@ -21,6 +21,6 @@ class ConfigSmokeTest {
         assertThat(props.documents()).isNotEmpty();
         assertThat(props.documents())
                 .extracting(DocumentDef::id)
-                .contains("karta");
+                .contains("Anketa-apt");
     }
 }
