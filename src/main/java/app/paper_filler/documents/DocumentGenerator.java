@@ -49,6 +49,9 @@ public class DocumentGenerator {
                 }
 
                 String name = (doc.outputName() !=null ? fileName(doc.outputName(),data) : doc.id()) + ".docx";
+                if (doc.company() != null) {
+                    name = doc.company() + "/" + name;
+                }
                 zip.putNextEntry(new ZipEntry(name));
                 zip.write(docBytes.toByteArray());
                 zip.closeEntry();

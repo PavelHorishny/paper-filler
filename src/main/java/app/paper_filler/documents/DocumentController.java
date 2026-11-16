@@ -16,7 +16,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -30,7 +33,19 @@ public class DocumentController {
         ClientForm form = FormSession.get(session);
         if(form == null) return "redirect:/";
         model.addAttribute("form",form);
-        model.addAttribute("documents", properties.documents());
+
+        List<DocumentDef> common = new ArrayList<>();
+        Map<String,List<DocumentDef>> company = new LinkedHashMap<>();
+
+        for(DocumentDef d : properties.documents()){
+            if(d.company() == null){
+                common.add(d);
+            }else {
+                company.computeIfAbsent(d.company(),k->new ArrayList<>()).add(d);
+            }
+        }
+        model.addAttribute("common", common);
+        model.addAttribute("company", company);
         return "documents";
     }
 
