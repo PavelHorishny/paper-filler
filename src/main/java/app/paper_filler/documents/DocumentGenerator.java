@@ -74,7 +74,7 @@ public class DocumentGenerator {
         data.put("localAddress", form.getLocalAddress().shortAddress());
         data.put("viber", text(form.getViber()));
         data.put("tel", text(form.getPhoneNumber()));
-        data.put("email", form.getEmail());
+        data.put("email", text(form.getEmail()));
         data.put("birthDate", formatDate(form.getBirthDate()));
         data.put("birthPlace", text(form.getBirthPlace()));
         data.put("label", form.getCitizenship().getCountry());
