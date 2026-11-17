@@ -1,0 +1,191 @@
+﻿WOJ;POW;GMI;RODZ;NAZWA;NAZWA_DOD;STAN_NA
+32;;;;ZACHODNIOPOMORSKIE;województwo;2026-01-01
+32;01;;;białogardzki;powiat;2026-01-01
+32;01;01;1;Białogard;gmina miejska;2026-01-01
+32;01;02;2;Białogard;gmina wiejska;2026-01-01
+32;01;03;4;Karlino;miasto;2026-01-01
+32;01;03;5;Karlino;obszar wiejski;2026-01-01
+32;01;04;4;Tychowo;miasto;2026-01-01
+32;01;04;5;Tychowo;obszar wiejski;2026-01-01
+32;02;;;choszczeński;powiat;2026-01-01
+32;02;01;2;Bierzwnik;gmina wiejska;2026-01-01
+32;02;02;4;Choszczno;miasto;2026-01-01
+32;02;02;5;Choszczno;obszar wiejski;2026-01-01
+32;02;03;4;Drawno;miasto;2026-01-01
+32;02;03;5;Drawno;obszar wiejski;2026-01-01
+32;02;04;2;Krzęcin;gmina wiejska;2026-01-01
+32;02;05;4;Pełczyce;miasto;2026-01-01
+32;02;05;5;Pełczyce;obszar wiejski;2026-01-01
+32;02;06;4;Recz;miasto;2026-01-01
+32;02;06;5;Recz;obszar wiejski;2026-01-01
+32;03;;;drawski;powiat;2026-01-01
+32;03;01;4;Czaplinek;miasto;2026-01-01
+32;03;01;5;Czaplinek;obszar wiejski;2026-01-01
+32;03;02;4;Drawsko Pomorskie;miasto;2026-01-01
+32;03;02;5;Drawsko Pomorskie;obszar wiejski;2026-01-01
+32;03;03;4;Kalisz Pomorski;miasto;2026-01-01
+32;03;03;5;Kalisz Pomorski;obszar wiejski;2026-01-01
+32;03;05;2;Wierzchowo;gmina wiejska;2026-01-01
+32;03;06;4;Złocieniec;miasto;2026-01-01
+32;03;06;5;Złocieniec;obszar wiejski;2026-01-01
+32;04;;;goleniowski;powiat;2026-01-01
+32;04;02;4;Goleniów;miasto;2026-01-01
+32;04;02;5;Goleniów;obszar wiejski;2026-01-01
+32;04;03;4;Maszewo;miasto;2026-01-01
+32;04;03;5;Maszewo;obszar wiejski;2026-01-01
+32;04;04;4;Nowogard;miasto;2026-01-01
+32;04;04;5;Nowogard;obszar wiejski;2026-01-01
+32;04;05;2;Osina;gmina wiejska;2026-01-01
+32;04;06;2;Przybiernów;gmina wiejska;2026-01-01
+32;04;07;4;Stepnica;miasto;2026-01-01
+32;04;07;5;Stepnica;obszar wiejski;2026-01-01
+32;05;;;gryficki;powiat;2026-01-01
+32;05;01;2;Brojce;gmina wiejska;2026-01-01
+32;05;02;4;Gryfice;miasto;2026-01-01
+32;05;02;5;Gryfice;obszar wiejski;2026-01-01
+32;05;03;2;Karnice;gmina wiejska;2026-01-01
+32;05;04;4;Płoty;miasto;2026-01-01
+32;05;04;5;Płoty;obszar wiejski;2026-01-01
+32;05;07;2;Rewal;gmina wiejska;2026-01-01
+32;05;08;4;Trzebiatów;miasto;2026-01-01
+32;05;08;5;Trzebiatów;obszar wiejski;2026-01-01
+32;06;;;gryfiński;powiat;2026-01-01
+32;06;01;2;Banie;gmina wiejska;2026-01-01
+32;06;02;4;Cedynia;miasto;2026-01-01
+32;06;02;5;Cedynia;obszar wiejski;2026-01-01
+32;06;03;4;Chojna;miasto;2026-01-01
+32;06;03;5;Chojna;obszar wiejski;2026-01-01
+32;06;04;4;Gryfino;miasto;2026-01-01
+32;06;04;5;Gryfino;obszar wiejski;2026-01-01
+32;06;05;4;Mieszkowice;miasto;2026-01-01
+32;06;05;5;Mieszkowice;obszar wiejski;2026-01-01
+32;06;06;4;Moryń;miasto;2026-01-01
+32;06;06;5;Moryń;obszar wiejski;2026-01-01
+32;06;07;2;Stare Czarnowo;gmina wiejska;2026-01-01
+32;06;08;4;Trzcińsko-Zdrój;miasto;2026-01-01
+32;06;08;5;Trzcińsko-Zdrój;obszar wiejski;2026-01-01
+32;06;09;2;Widuchowa;gmina wiejska;2026-01-01
+32;07;;;kamieński;powiat;2026-01-01
+32;07;01;4;Dziwnów;miasto;2026-01-01
+32;07;01;5;Dziwnów;obszar wiejski;2026-01-01
+32;07;02;4;Golczewo;miasto;2026-01-01
+32;07;02;5;Golczewo;obszar wiejski;2026-01-01
+32;07;03;4;Kamień Pomorski;miasto;2026-01-01
+32;07;03;5;Kamień Pomorski;obszar wiejski;2026-01-01
+32;07;04;4;Międzyzdroje;miasto;2026-01-01
+32;07;04;5;Międzyzdroje;obszar wiejski;2026-01-01
+32;07;05;2;Świerzno;gmina wiejska;2026-01-01
+32;07;06;4;Wolin;miasto;2026-01-01
+32;07;06;5;Wolin;obszar wiejski;2026-01-01
+32;08;;;kołobrzeski;powiat;2026-01-01
+32;08;01;1;Kołobrzeg;gmina miejska;2026-01-01
+32;08;02;2;Dygowo;gmina wiejska;2026-01-01
+32;08;03;4;Gościno;miasto;2026-01-01
+32;08;03;5;Gościno;obszar wiejski;2026-01-01
+32;08;04;2;Kołobrzeg;gmina wiejska;2026-01-01
+32;08;05;2;Rymań;gmina wiejska;2026-01-01
+32;08;06;2;Siemyśl;gmina wiejska;2026-01-01
+32;08;07;2;Ustronie Morskie;gmina wiejska;2026-01-01
+32;09;;;koszaliński;powiat;2026-01-01
+32;09;01;2;Będzino;gmina wiejska;2026-01-01
+32;09;02;2;Biesiekierz;gmina wiejska;2026-01-01
+32;09;03;4;Bobolice;miasto;2026-01-01
+32;09;03;5;Bobolice;obszar wiejski;2026-01-01
+32;09;04;2;Manowo;gmina wiejska;2026-01-01
+32;09;05;4;Mielno;miasto;2026-01-01
+32;09;05;5;Mielno;obszar wiejski;2026-01-01
+32;09;06;4;Polanów;miasto;2026-01-01
+32;09;06;5;Polanów;obszar wiejski;2026-01-01
+32;09;07;4;Sianów;miasto;2026-01-01
+32;09;07;5;Sianów;obszar wiejski;2026-01-01
+32;09;08;2;Świeszyno;gmina wiejska;2026-01-01
+32;10;;;myśliborski;powiat;2026-01-01
+32;10;01;4;Barlinek;miasto;2026-01-01
+32;10;01;5;Barlinek;obszar wiejski;2026-01-01
+32;10;02;2;Boleszkowice;gmina wiejska;2026-01-01
+32;10;03;4;Dębno;miasto;2026-01-01
+32;10;03;5;Dębno;obszar wiejski;2026-01-01
+32;10;04;4;Myślibórz;miasto;2026-01-01
+32;10;04;5;Myślibórz;obszar wiejski;2026-01-01
+32;10;05;2;Nowogródek Pomorski;gmina wiejska;2026-01-01
+32;11;;;policki;powiat;2026-01-01
+32;11;01;2;Dobra (Szczecińska);gmina wiejska;2026-01-01
+32;11;02;2;Kołbaskowo;gmina wiejska;2026-01-01
+32;11;03;4;Nowe Warpno;miasto;2026-01-01
+32;11;03;5;Nowe Warpno;obszar wiejski;2026-01-01
+32;11;04;4;Police;miasto;2026-01-01
+32;11;04;5;Police;obszar wiejski;2026-01-01
+32;12;;;pyrzycki;powiat;2026-01-01
+32;12;01;2;Bielice;gmina wiejska;2026-01-01
+32;12;02;2;Kozielice;gmina wiejska;2026-01-01
+32;12;03;4;Lipiany;miasto;2026-01-01
+32;12;03;5;Lipiany;obszar wiejski;2026-01-01
+32;12;04;2;Przelewice;gmina wiejska;2026-01-01
+32;12;05;4;Pyrzyce;miasto;2026-01-01
+32;12;05;5;Pyrzyce;obszar wiejski;2026-01-01
+32;12;06;2;Warnice;gmina wiejska;2026-01-01
+32;13;;;sławieński;powiat;2026-01-01
+32;13;01;1;Darłowo;gmina miejska;2026-01-01
+32;13;02;1;Sławno;gmina miejska;2026-01-01
+32;13;03;2;Darłowo;gmina wiejska;2026-01-01
+32;13;04;2;Malechowo;gmina wiejska;2026-01-01
+32;13;05;2;Postomino;gmina wiejska;2026-01-01
+32;13;06;2;Sławno;gmina wiejska;2026-01-01
+32;14;;;stargardzki;powiat;2026-01-01
+32;14;01;1;Stargard;gmina miejska;2026-01-01
+32;14;02;4;Chociwel;miasto;2026-01-01
+32;14;02;5;Chociwel;obszar wiejski;2026-01-01
+32;14;03;4;Dobrzany;miasto;2026-01-01
+32;14;03;5;Dobrzany;obszar wiejski;2026-01-01
+32;14;04;2;Dolice;gmina wiejska;2026-01-01
+32;14;05;4;Ińsko;miasto;2026-01-01
+32;14;05;5;Ińsko;obszar wiejski;2026-01-01
+32;14;06;2;Kobylanka;gmina wiejska;2026-01-01
+32;14;08;2;Marianowo;gmina wiejska;2026-01-01
+32;14;09;2;Stara Dąbrowa;gmina wiejska;2026-01-01
+32;14;10;2;Stargard;gmina wiejska;2026-01-01
+32;14;11;4;Suchań;miasto;2026-01-01
+32;14;11;5;Suchań;obszar wiejski;2026-01-01
+32;15;;;szczecinecki;powiat;2026-01-01
+32;15;01;1;Szczecinek;gmina miejska;2026-01-01
+32;15;02;4;Barwice;miasto;2026-01-01
+32;15;02;5;Barwice;obszar wiejski;2026-01-01
+32;15;03;4;Biały Bór;miasto;2026-01-01
+32;15;03;5;Biały Bór;obszar wiejski;2026-01-01
+32;15;04;4;Borne Sulinowo;miasto;2026-01-01
+32;15;04;5;Borne Sulinowo;obszar wiejski;2026-01-01
+32;15;05;2;Grzmiąca;gmina wiejska;2026-01-01
+32;15;06;2;Szczecinek;gmina wiejska;2026-01-01
+32;16;;;świdwiński;powiat;2026-01-01
+32;16;01;1;Świdwin;gmina miejska;2026-01-01
+32;16;02;2;Brzeżno;gmina wiejska;2026-01-01
+32;16;03;4;Połczyn-Zdrój;miasto;2026-01-01
+32;16;03;5;Połczyn-Zdrój;obszar wiejski;2026-01-01
+32;16;04;2;Rąbino;gmina wiejska;2026-01-01
+32;16;05;2;Sławoborze;gmina wiejska;2026-01-01
+32;16;06;2;Świdwin;gmina wiejska;2026-01-01
+32;17;;;wałecki;powiat;2026-01-01
+32;17;01;1;Wałcz;gmina miejska;2026-01-01
+32;17;02;4;Człopa;miasto;2026-01-01
+32;17;02;5;Człopa;obszar wiejski;2026-01-01
+32;17;03;4;Mirosławiec;miasto;2026-01-01
+32;17;03;5;Mirosławiec;obszar wiejski;2026-01-01
+32;17;04;4;Tuczno;miasto;2026-01-01
+32;17;04;5;Tuczno;obszar wiejski;2026-01-01
+32;17;05;2;Wałcz;gmina wiejska;2026-01-01
+32;18;;;łobeski;powiat;2026-01-01
+32;18;01;4;Dobra;miasto;2026-01-01
+32;18;01;5;Dobra;obszar wiejski;2026-01-01
+32;18;02;4;Łobez;miasto;2026-01-01
+32;18;02;5;Łobez;obszar wiejski;2026-01-01
+32;18;03;2;Radowo Małe;gmina wiejska;2026-01-01
+32;18;04;4;Resko;miasto;2026-01-01
+32;18;04;5;Resko;obszar wiejski;2026-01-01
+32;18;05;4;Węgorzyno;miasto;2026-01-01
+32;18;05;5;Węgorzyno;obszar wiejski;2026-01-01
+32;61;;;Koszalin;miasto na prawach powiatu;2026-01-01
+32;61;01;1;Koszalin;gmina miejska;2026-01-01
+32;62;;;Szczecin;miasto na prawach powiatu;2026-01-01
+32;62;01;1;Szczecin;gmina miejska;2026-01-01
+32;63;;;Świnoujście;miasto na prawach powiatu;2026-01-01
+32;63;01;1;Świnoujście;gmina miejska;2026-01-01
