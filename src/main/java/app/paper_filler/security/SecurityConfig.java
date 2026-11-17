@@ -1,6 +1,8 @@
 package app.paper_filler.security;
 
 import app.paper_filler.config.AppProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -20,20 +22,32 @@ import java.util.stream.Collectors;
 @Configuration
 public class SecurityConfig {
 
+    private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+
     @Bean
     SecurityFilterChain security (HttpSecurity http, AppProperties props) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/css/**", "/js/**", "/error").permitAll()
+                        .requestMatchers("/css/**", "/js/**", "/error", "/login-error").permitAll()
                         .anyRequest().authenticated())
                 .oauth2Login(oauth -> oauth
                         .userInfoEndpoint(ui->ui.oidcUserService(allowlist(props.allowedEmails())))
                         /*.userInfoEndpoint(ui -> ui.oidcUserService(allowlist(props.allowedEmails()))))*/
                         .failureHandler(((request, response, exception) -> {
-                            response.setContentType("text/plain;charset=UTF-8");
-                            response.getWriter().write("failure: "+exception.getMessage());
-                        })));
-                /*.logout(logout -> logout.logoutSuccessUrl("/"));*/
+                            log.warn("Login failed: {}", exception.getMessage());
+
+                            if(exception instanceof OAuth2AuthenticationException e && "access_denied".equals(e.getError().getErrorCode()))
+                            {
+                                response.sendRedirect("/login-error?denied");
+                            }else{
+                                response.sendRedirect("/login-error");
+                            }
+                        })))
+                .exceptionHandling(ex-> ex
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            log.warn("Access denied (probably expired session): {}",accessDeniedException.getMessage());
+                            response.sendRedirect("/login-error");
+                        }));
         return http.build();
     }
 
