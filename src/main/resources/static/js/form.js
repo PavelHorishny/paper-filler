@@ -156,3 +156,143 @@ companySelect.addEventListener('change', updateCompanyApartment);
 
 updateHousing();            // при загрузке (и после «Редактировать»)
 updateCompanyApartment();
+
+// ---------- Подсказки польских адресов (TERYT) ----------
+const plCity      = document.getElementById('localAddress.city');
+const plStreet    = document.getElementById('localAddress.street');
+const plCommune   = document.getElementById('localAddress.commune');
+const plDistrict  = document.getElementById('localAddress.district');
+//const citiesList  = document.getElementById('pl-cities');
+//const streetsList = document.getElementById('pl-streets');
+
+//let foundCities  = [];    // последние подсказки городов
+//let foundStreets = [];    // последние подсказки улиц
+let citySym      = null;  // код выбранного города — нужен для поиска улиц
+//let cityTimer    = null;
+//let streetTimer  = null;
+
+function cityLabel(c) {
+    return c.name + ' (gm. ' + c.gmina + ', pow. ' + c.powiat + ')';
+}
+
+function streetLabel(s) {
+    return s.type ? s.type + ' ' + s.name : s.name;
+}
+
+// положить варианты в <datalist>
+/*function fillList(list, labels) {
+    list.innerHTML = '';
+    labels.forEach(text => {
+        const option = document.createElement('option');
+        option.value = text;
+        list.appendChild(option);
+    });
+}*/
+
+// запрос к нашему серверу; если что-то не так (например, кончилась сессия) — пустой список
+async function getJson(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) return [];
+        return await response.json();
+    } catch (e) {
+        return [];
+    }
+}
+
+// --- город ---
+/*plCity.addEventListener('input', () => {
+    const chosen = foundCities.find(c => cityLabel(c) === plCity.value);
+    if (chosen) {                          // выбрали вариант из подсказок
+        plCity.value     = chosen.name;
+        plCommune.value  = chosen.gmina;
+        plDistrict.value = chosen.powiat;
+        citySym = chosen.sym;
+        streetsList.innerHTML = '';
+        return;
+    }
+
+    citySym = null;                        // печатают руками — код города неизвестен
+    clearTimeout(cityTimer);
+    cityTimer = setTimeout(async () => {
+        const q = plCity.value.trim();
+        if (q.length < 2) return;
+        foundCities = await getJson('/api/pl/cities?q=' + encodeURIComponent(q));
+        fillList(citiesList, foundCities.map(cityLabel));
+    }, 300);
+});*/
+
+// --- улица ---
+/*plStreet.addEventListener('input', () => {
+    const chosen = foundStreets.find(s => streetLabel(s) === plStreet.value);
+    if (chosen) {
+        plStreet.value = chosen.name;      // без "ul." — он уже есть в шаблонах
+        return;
+    }
+
+    if (!citySym) return;                  // город не выбран из подсказок — улицы не ищем
+    clearTimeout(streetTimer);
+    streetTimer = setTimeout(async () => {
+        const q = plStreet.value.trim();
+        if (q.length < 2) return;
+        foundStreets = await getJson('/api/pl/streets?sym=' + citySym + '&q=' + encodeURIComponent(q));
+        fillList(streetsList, foundStreets.map(streetLabel));
+    }, 300);
+});*/
+function attachSuggestions(input, loadItems, labelOf, onChoose) {
+    const box = document.createElement('ul');
+    box.className = 'suggestions';
+    box.hidden = true;
+    input.parentElement.style.position = 'relative';
+    input.after(box);                       // список сразу под полем
+
+    let timer = null;
+
+    input.addEventListener('input', () => {
+        clearTimeout(timer);
+        timer = setTimeout(async () => {
+            const q = input.value.trim();
+            const items = q.length < 2 ? [] : await loadItems(q);
+
+            box.innerHTML = '';
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = labelOf(item);
+                li.addEventListener('pointerdown', e => {
+                    e.preventDefault();     // чтобы поле не потеряло фокус раньше выбора
+                    onChoose(item);
+                    box.hidden = true;
+                });
+                box.appendChild(li);
+            });
+            box.hidden = items.length === 0;
+        }, 300);
+    });
+
+    input.addEventListener('blur', () => { box.hidden = true; });   // ушли из поля — прячем
+}
+
+// --- город ---
+plCity.addEventListener('input', () => { citySym = null; });     // печатают руками — код неизвестен
+
+attachSuggestions(
+    plCity,
+    q => getJson('/api/pl/cities?q=' + encodeURIComponent(q)),
+    cityLabel,
+    c => {
+        plCity.value     = c.name;
+        plCommune.value  = c.gmina;
+        plDistrict.value = c.powiat;
+        citySym = c.sym;
+    }
+);
+
+// --- улица ---
+attachSuggestions(
+    plStreet,
+    q => citySym
+        ? getJson('/api/pl/streets?sym=' + citySym + '&q=' + encodeURIComponent(q))
+        : Promise.resolve([]),              // город не выбран из подсказок — улицы не ищем
+    streetLabel,
+    s => { plStreet.value = s.name; }       // без "ul." — он уже есть в шаблонах
+);
