@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:if="${param.denied}">
+    <h2>Нет доступа</h2>
+    <p>Этот Google-аккаунт не добавлен в список пользователей. Обратитесь к администратору.</p>
+</div>
+
+<div th:unless="${param.denied}">
+    <h2>Сессия закончилась</h2>
+    <p>Войдите ещё раз — это займёт пару секунд.</p>
+</div>
+
+<p><a th:href="@{/}">Войти снова</a></p>
+
+</body>
+</html>
