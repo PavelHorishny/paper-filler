@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class TableBankFinderTest {
     private final TableBankFinder finder = new TableBankFinder(
-            new AppProperties(null, List.of(), List.of(), Map.of("102", "PKO Bank Polski S.A."),null));
+            new AppProperties(null, List.of(), List.of(), Map.of("102", "PKO Bank Polski S.A."),null, List.of()));
 
     @Test
     void findsBankByCode() {

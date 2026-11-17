@@ -39,4 +39,8 @@ public class ClientForm {
     private String birthPlace;
     private String bank;
 
+    private boolean companyHousing = true;
+    private String companyAddressId;
+    private String companyApartment;
+
 }

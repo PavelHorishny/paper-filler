@@ -158,8 +158,35 @@
             </div>
         </div>
     </fieldset>
+
     <fieldset>
         <legend>Польский адрес</legend>
+        <label><input type="radio" th:field="*{companyHousing}" th:value="true"> Фирменное жильё</label>
+        <label><input type="radio" th:field="*{companyHousing}" th:value="false"> Своё жильё</label>
+    </fieldset>
+
+    <fieldset id="company-address">
+        <legend>Фирменное жильё</legend>
+        <div class="row">
+            <div>
+                <label>Адрес</label><br>
+                <select th:field="*{companyAddressId}" required>
+                    <option value="">—</option>
+                    <option th:each="a : ${companyAddresses}"
+                            th:value="${a.id()}"
+                            th:text="${a.label()}"
+                            th:data-needs-apartment="${a.needsApartment()}"></option>
+                </select>
+            </div>
+            <div id="company-apartment" hidden>
+                <label>Кв./комната</label><br>
+                <input type="text" class="short" th:field="*{companyApartment}">
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset id="own-address">
+        <legend>Своё жильё</legend>
 
         <div class="row">
             <div>

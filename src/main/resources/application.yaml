@@ -10,7 +10,7 @@ spring:
   application:
     name: paper-filler
   config:
-    import: "file:./config/documents.yaml, file:./config/banks.yaml"
+    import: "file:./config/documents.yaml, file:./config/banks.yaml, file:./config/company-addresses.yaml"
 
 app:
   allowed-emails: ${ALLOWED_EMAILS:}

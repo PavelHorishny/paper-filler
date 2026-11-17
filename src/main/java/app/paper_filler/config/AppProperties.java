@@ -1,6 +1,7 @@
 package app.paper_filler.config;
 
 import app.paper_filler.documents.DocumentDef;
+import app.paper_filler.form.CompanyAddress;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.nio.file.Path;
@@ -13,7 +14,8 @@ public record AppProperties(
         List<DocumentDef> documents,
         List<String> allowedEmails,
         Map<String,String> banks,
-        Release release
+        Release release,
+        List<CompanyAddress> companyAddresses
 ) {
     public record Release(String version, List<String> notes){}
 }

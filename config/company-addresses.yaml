@@ -171,15 +171,3 @@ app:
       tax-office: "SECOND"
       needs-apartment: true
 
-    - id: ""
-      label: ""
-      region: "zachodniopomorskie"
-      district: ""
-      commune: ""
-      city: ""
-      street: ""
-      house: ""
-      apartment: ""
-      postal-code: ""
-      tax-office: ""
-      needs-apartment: false
