@@ -16,12 +16,12 @@ app:
   company-addresses:
 
     - id: "AMK"                  # например: szczecin-wojska-1
-      label: "Malkowskiego"               # текст в выпадающем списке, например: "Szczecin, Wojska Polskiego 1 — общежитие"
-      region: "zachodniopom"   # województwo
+      label: "Małkowskiego"               # текст в выпадающем списке, например: "Szczecin, Wojska Polskiego 1 — общежитие"
+      region: "Zachodniopom."   # województwo
       district: "Szczecin"            # powiat
       commune: "Szczecin"             # gmina
       city: "Szczecin"                # miejscowość
-      street: "A. Malkowskiego"              # улица — как пишете в форме
+      street: "A. Małkowskiego"              # улица — как пишете в форме
       house: "18"               # номер дома
       apartment: "9"           # квартира (если всегда одна и та же)
       postal-code: "70-306"         # индекс, например "70-001"
@@ -29,12 +29,12 @@ app:
       needs-apartment: false  # true / false
 
     - id: "JG74"
-      label: "Jagiellonska 74"
-      region: "zachodniopom"
+      label: "Jagiellońska 74"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
-      street: "Jagiellonska"
+      street: "Jagiellońska"
       house: "74"
       apartment: "2"
       postal-code: "70-365"
@@ -42,12 +42,12 @@ app:
       needs-apartment: false
 
     - id: "JG83"
-      label: "Jagiellonska 83"
-      region: "zachodniopom"
+      label: "Jagiellońska 83"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
-      street: "Jagiellonska"
+      street: "Jagiellońska"
       house: "83"
       apartment: "7"
       postal-code: "70-362"
@@ -55,12 +55,12 @@ app:
       needs-apartment: false
 
     - id: "JP"
-      label: "Jana Pawla"
-      region: "zachodniopom"
+      label: "Jana Pawła"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
-      street: "al. Jana Pawla"
+      street: "al. Jana Pawła II"
       house: "8"
       apartment: "6"
       postal-code: "70-415"
@@ -68,12 +68,12 @@ app:
       needs-apartment: false
 
     - id: "ZOL"
-      label: "Zolkiewskiego"
-      region: "zachodniopom"
+      label: "Żółkiewskiego"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
-      street: "Zolkiewskiego"
+      street: "Żółkiewskiego"
       house: "5"
       apartment: "18"
       postal-code: "70-346"
@@ -81,12 +81,12 @@ app:
       needs-apartment: false
 
     - id: "Jag"
-      label: "Jagielly"
-      region: "zachodniopom"
+      label: "Jagiełły"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
-      street: "Jagielly"
+      street: "Jagiełły"
       house: "20A"
       apartment: "10"
       postal-code: "70-260"
@@ -94,12 +94,12 @@ app:
       needs-apartment: false
 
     - id: "BL"
-      label: "Smialego"
-      region: "zachodniopom"
+      label: "Śmiałego"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
-      street: "B. Smialego"
+      street: "B. Śmiałego"
       house: "29"
       apartment: "10"
       postal-code: "70-348"
@@ -108,7 +108,7 @@ app:
 
     - id: "PT"
       label: "Potulicka"
-      region: "zachodniopom"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
@@ -120,12 +120,12 @@ app:
       needs-apartment: false
 
     - id: "LUK"
-      label: "Lukasinskiego"
-      region: "zachodniopom"
+      label: "Łukasińskiego"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
-      street: "Lukasinskiego"
+      street: "Łukasińskiego"
       house: "108D"
       apartment: ""
       postal-code: "71-215"
@@ -133,12 +133,12 @@ app:
       needs-apartment: false
 
     - id: "LOK"
-      label: "Lokietka"
-      region: "zachodniopom"
+      label: "Łokietka"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
-      street: "W. Lokietka"
+      street: "W. Łokietka"
       house: "12"
       apartment: "8"
       postal-code: "70-255"
@@ -147,7 +147,7 @@ app:
 
     - id: "BRZ4"
       label: "Brzechwy 4"
-      region: "zachodniopom"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
@@ -160,11 +160,11 @@ app:
 
     - id: "BRZ6"
       label: "Brzechwy 6"
-      region: "zachodniopom"
+      region: "Zachodniopom."
       district: "Szczecin"
       commune: "Szczecin"
       city: "Szczecin"
-      street: "J. Brzechwy"
+      street: "Jana Brzechwy"
       house: "6"
       apartment: ""
       postal-code: "71-241"
