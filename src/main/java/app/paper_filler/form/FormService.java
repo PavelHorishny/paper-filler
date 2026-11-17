@@ -13,6 +13,7 @@ public class FormService {
     private final AddressService addressService;
     private final TransliterationService transliterationService;
     private final BankFinder bankFinder;
+    private final CompanyAddressService companyAddressService;
 
     public void prepare(ClientForm form){
         Citizenship c = form.getCitizenship();
@@ -20,7 +21,16 @@ public class FormService {
         form.setBirthPlace(transliterationService.transliterate(form.getBirthPlace(),c));
         form.setSchoolName(transliterationService.transliterate(form.getSchoolName(),c));
         form.setHomeAddress(addressService.fillHomeAddress(form.getHomeAddress(),c));
-        form.setLocalAddress(addressService.fillLocalAddress(form.getLocalAddress()));
+        if(form.isCompanyHousing()){
+            CompanyAddress company = companyAddressService.find(form.getCompanyAddressId());
+            if(company != null){
+                form.setLocalAddress(company.toAddress(form.getCompanyApartment()));
+                form.setTaxOffice(company.taxOffice());
+            }
+        }else {
+            form.setLocalAddress(addressService.fillLocalAddress(form.getLocalAddress()));
+        }
+
         if(form.getAccount() != null){
             form.setAccount(form.getAccount().replaceAll("\\D",""));
         }

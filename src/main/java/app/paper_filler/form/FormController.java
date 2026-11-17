@@ -18,6 +18,7 @@ public class FormController {
 
     private final FormService formService;
     private final AppProperties properties;
+    private final CompanyAddressService companyAddressService;
 
     private static final String FORM = "clientForm";
 
@@ -38,6 +39,7 @@ public class FormController {
         model.addAttribute("citizenships", Citizenship.values());
         model.addAttribute("taxOffices", TaxOffice.values());
         model.addAttribute("release", properties.release());
+        model.addAttribute("companyAddresses", companyAddressService.all());
         return "form";
     }
 

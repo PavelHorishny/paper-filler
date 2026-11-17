@@ -128,3 +128,31 @@ if (whatsNew) {
         } catch (e) {}
     });
 }
+
+// Фирменное / своё жильё
+const companyBlock  = document.getElementById('company-address');
+const ownBlock      = document.getElementById('own-address');
+const companySelect = document.getElementById('companyAddressId');
+const companyAptRow = document.getElementById('company-apartment');
+
+function updateHousing() {
+    const checked = document.querySelector('input[name="companyHousing"]:checked');
+    const company = checked !== null && checked.value === 'true';
+
+    companyBlock.hidden   = !company;
+    companyBlock.disabled = !company;   // выключенный блок не отправляется и не проверяется
+    ownBlock.hidden       = company;
+    ownBlock.disabled     = company;
+}
+
+function updateCompanyApartment() {
+    const option = companySelect.selectedOptions[0];
+    companyAptRow.hidden = !(option && option.dataset.needsApartment === 'true');
+}
+
+document.querySelectorAll('input[name="companyHousing"]')
+    .forEach(r => r.addEventListener('change', updateHousing));
+companySelect.addEventListener('change', updateCompanyApartment);
+
+updateHousing();            // при загрузке (и после «Редактировать»)
+updateCompanyApartment();

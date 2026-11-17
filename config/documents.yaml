@@ -42,6 +42,6 @@ app:
         output-name: "{{name}}_{{surname}}_zleceniobiorcy_{{fulfilmentDate}}" }
     - { id: Pelnomocnictwo, template: Pelnomocnictwo.docx, required: true,
         output-name: "{{name}}_{{surname}}_Pelnomocnictwo_{{fulfilmentDate}}" }
-    - { id: UMOWA ZOO new (2), template: Umowa.docx, required: true,
+    - { id: Umowa, template: Umowa.docx, required: true,
         output-name: "{{name}}_{{surname}}_Umowa_{{fulfilmentDate}}" }
 
