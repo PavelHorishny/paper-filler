@@ -142,7 +142,7 @@ app:
       house: "12"
       apartment: "8"
       postal-code: "70-255"
-      tax-office: "FIRST"
+      tax-office: "SECOND"
       needs-apartment: false
 
     - id: "BRZ4"

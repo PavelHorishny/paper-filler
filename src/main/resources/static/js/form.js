@@ -241,8 +241,11 @@ attachSuggestions(
         ? getJson('/api/pl/streets?sym=' + citySym + '&q=' + encodeURIComponent(q))
         : Promise.resolve([]),              // город не выбран из подсказок — улицы не ищем
     streetLabel,
-    s => { plStreet.value = s.name;
-                    fillPostcode();
+    s => {
+                    plStreet.value = s.name;
+                    streetSym = s.symUl;
+                    void fillPostcode();
+                    void fillTaxOffice();
                 }       // без "ul." — он уже есть в шаблонах
 );
 // ---------- Индекс по адресу (UUG) ----------
@@ -277,3 +280,32 @@ async function fillPostcode() {
 
 plHouse.addEventListener('change', fillPostcode);
 plPostal.addEventListener('input', () => { plPostal.dataset.auto = 'false'; });
+
+// ---------- Urząd skarbowy (пока только Щецин) ----------
+const SZCZECIN_SYM = '0977976';
+const taxSelect = document.getElementById('taxOffice');
+let streetSym = null;   // код выбранной улицы
+
+async function fillTaxOffice() {
+    if (citySym !== SZCZECIN_SYM || !streetSym) return;
+    if (taxSelect.value && taxSelect.dataset.auto !== 'true') return;   // выбран руками — не трогаем
+
+    const url = '/api/pl/tax-office?sym=' + streetSym
+        + '&house=' + encodeURIComponent(plHouse.value.trim());
+    try {
+        const response = await fetch(url);
+        const office = response.ok ? (await response.text()).trim() : '';
+        if (['FIRST', 'SECOND', 'THIRD'].includes(office)) {
+            taxSelect.value = office;
+            taxSelect.dataset.auto = 'true';
+        } else if (taxSelect.dataset.auto === 'true') {
+            taxSelect.value = '';                     // старый авто-выбор к новому адресу не подходит
+        }
+    } catch (e) {
+        // не получилось — выберут руками
+    }
+}
+
+plStreet.addEventListener('input', () => { streetSym = null; });       // улицу печатают руками
+plHouse.addEventListener('change', fillTaxOffice);
+taxSelect.addEventListener('change', () => { taxSelect.dataset.auto = 'false'; });
