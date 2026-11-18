@@ -241,7 +241,9 @@ attachSuggestions(
         ? getJson('/api/pl/streets?sym=' + citySym + '&q=' + encodeURIComponent(q))
         : Promise.resolve([]),              // город не выбран из подсказок — улицы не ищем
     streetLabel,
-    s => { plStreet.value = s.name;
+    s => {
+                    plStreet.value = s.name;
+                    streetSym = s.symUl;
                     void fillPostcode();
                     void fillTaxOffice();
                 }       // без "ul." — он уже есть в шаблонах

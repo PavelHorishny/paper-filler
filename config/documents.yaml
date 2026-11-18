@@ -44,4 +44,5 @@ app:
         output-name: "{{name}}_{{surname}}_Pelnomocnictwo_{{fulfilmentDate}}" }
     - { id: Umowa, template: Umowa.docx, required: true,
         output-name: "{{name}}_{{surname}}_Umowa_{{fulfilmentDate}}" }
-
+    - { id: Ankieta-Fortuna, template: Ankieta_FORTUNA_wybor_ok.docx, required: false,
+        output-name: "{{name}}_{{surname}}_Ankieta_Fortuna_{{fulfilmentDate}}" }
