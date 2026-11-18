@@ -241,5 +241,39 @@ attachSuggestions(
         ? getJson('/api/pl/streets?sym=' + citySym + '&q=' + encodeURIComponent(q))
         : Promise.resolve([]),              // город не выбран из подсказок — улицы не ищем
     streetLabel,
-    s => { plStreet.value = s.name; }       // без "ul." — он уже есть в шаблонах
+    s => { plStreet.value = s.name;
+                    fillPostcode();
+                }       // без "ul." — он уже есть в шаблонах
 );
+// ---------- Индекс по адресу (UUG) ----------
+const plHouse  = document.getElementById('localAddress.house');
+const plPostal = document.getElementById('localAddress.postalCode');
+
+async function fillPostcode() {
+    const city   = plCity.value.trim();
+    const street = plStreet.value.trim();
+    const house  = plHouse.value.trim();
+    if (!city || !street || !house) return;
+
+    // индекс вписан руками — не трогаем
+    if (plPostal.value && plPostal.dataset.auto !== 'true') return;
+
+    const url = '/api/pl/postcode?city=' + encodeURIComponent(city)
+        + '&street=' + encodeURIComponent(street)
+        + '&house='  + encodeURIComponent(house);
+    try {
+        const response = await fetch(url);
+        const code = response.ok ? (await response.text()).trim() : '';
+        if (/^\d{2}-\d{3}$/.test(code)) {
+            plPostal.value = code;
+            plPostal.dataset.auto = 'true';
+        } else if (plPostal.dataset.auto === 'true') {
+            plPostal.value = '';           // старый авто-индекс к новому адресу не подходит
+        }
+    } catch (e) {
+        // сервис недоступен — индекс впишут руками
+    }
+}
+
+plHouse.addEventListener('change', fillPostcode);
+plPostal.addEventListener('input', () => { plPostal.dataset.auto = 'false'; });
