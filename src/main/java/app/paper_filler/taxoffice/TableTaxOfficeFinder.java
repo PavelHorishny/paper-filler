@@ -47,7 +47,7 @@ public class TableTaxOfficeFinder implements TaxOfficeFinder{
         if(rules==null){
             return null;
         }
-        if(rules.size() == 1 && rules.getFirst().houses.isEmpty()){
+        if(rules.size() == 1 && rules.getFirst().houses().isEmpty()){
             return rules.getFirst().office();
         }
 
@@ -57,7 +57,7 @@ public class TableTaxOfficeFinder implements TaxOfficeFinder{
         TaxOffice others = null;
         for(Rule r: rules) {
             switch (r.houses()){
-                case "*" -> others = r.office;
+                case "*" -> others = r.office();
                 case "?","" -> { }
                 default -> {
                     if(matches(r.houses(),n)) return r.office();
