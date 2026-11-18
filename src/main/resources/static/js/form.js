@@ -344,3 +344,14 @@ attachSuggestions(
     s => s.type + ' ' + s.name,                // "вул. Сумська"
     s => { uaStreet.value = s.name; }          // "Сумська"
 );
+
+const birthPlace = document.getElementById('birthPlace');
+
+attachSuggestions(
+    birthPlace,
+    q => isUkraine()
+                ? getJson('/api/ua/cities?q=' + encodeURIComponent(q))
+                : Promise.resolve([]),
+    c => c.present,
+    c => {birthPlace.value = c.name;}
+);
