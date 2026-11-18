@@ -1,7 +1,5 @@
 app:
   documents:
-    - { id: Anketa-apt, company: APT, template: APT/Anketa_APT.docx, required: true,
-        output-name: "{{name}}_{{surname}}_Anketa_APT_{{fulfilmentDate}}" }
     - { id: Informacja-apt, company: APT, template: APT/Informacja_APT.docx, required: true,
         output-name: "{{name}}_{{surname}}_Informacja_APT_{{fulfilmentDate}}" }
     - { id: Konto-apt, company: APT, template: APT/Konto_APT.docx, required: false,
@@ -18,8 +16,6 @@ app:
         output-name: "{{name}}_{{surname}}_Rodo_APT_{{fulfilmentDate}}" }
     - { id: Student-apt, company: APT, template: APT/Student_APT.docx, required: false,
         output-name: "{{name}}_{{surname}}_Student_APT_{{fulfilmentDate}}" }
-    - { id: Anketa-out, company: OUT, template: OUT/Anketa_OUT.docx, required: true,
-        output-name: "{{name}}_{{surname}}_Anketa_OUT_{{fulfilmentDate}}" }
     - { id: Informacja-out, company: OUT, template: OUT/Informacja_OUT.docx, required: true,
         output-name: "{{name}}_{{surname}}_Informacja_OUT_{{fulfilmentDate}}" }
     - { id: Konto-out, company: OUT, template: OUT/Konto_OUT.docx, required: false,
@@ -44,5 +40,5 @@ app:
         output-name: "{{name}}_{{surname}}_Pelnomocnictwo_{{fulfilmentDate}}" }
     - { id: Umowa, template: Umowa.docx, required: true,
         output-name: "{{name}}_{{surname}}_Umowa_{{fulfilmentDate}}" }
-    - { id: Ankieta-Fortuna, template: Ankieta_FORTUNA_wybor_ok.docx, required: false,
+    - { id: Anketa, template: ANKETA_NOWE.docx, required: true,
         output-name: "{{name}}_{{surname}}_Ankieta_Fortuna_{{fulfilmentDate}}" }

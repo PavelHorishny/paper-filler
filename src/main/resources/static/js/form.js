@@ -309,3 +309,49 @@ async function fillTaxOffice() {
 plStreet.addEventListener('input', () => { streetSym = null; });       // улицу печатают руками
 plHouse.addEventListener('change', fillTaxOffice);
 taxSelect.addEventListener('change', () => { taxSelect.dataset.auto = 'false'; });
+
+// ---------- Подсказки украинских адресов (Новая Почта) ----------
+const uaCity   = document.getElementById('homeAddress.city');
+const uaStreet = document.getElementById('homeAddress.street');
+const uaRegion = document.getElementById('homeAddress.region');
+let uaCityRef  = null;   // Ref выбранного города — только если у него есть улицы
+
+function isUkraine() {
+    const checked = document.querySelector('input[name="citizenship"]:checked');
+    return checked !== null && checked.value === 'UA';
+}
+
+uaCity.addEventListener('input', () => { uaCityRef = null; });   // печатают руками
+
+attachSuggestions(
+    uaCity,
+    q => isUkraine()
+        ? getJson('/api/ua/cities?q=' + encodeURIComponent(q))
+        : Promise.resolve([]),                 // подсказки только для Украины
+    c => c.present,                            // "м. Харків, Харківська обл."
+    c => {
+        uaCity.value   = c.name;               // "Харків"
+        uaRegion.value = c.area;               // "Харківська"
+        uaCityRef = c.streetsAvailable ? c.ref : null;
+    }
+);
+
+attachSuggestions(
+    uaStreet,
+    q => uaCityRef
+        ? getJson('/api/ua/streets?ref=' + uaCityRef + '&q=' + encodeURIComponent(q))
+        : Promise.resolve([]),                 // нет города или у него нет улиц в базе
+    s => s.type + ' ' + s.name,                // "вул. Сумська"
+    s => { uaStreet.value = s.name; }          // "Сумська"
+);
+
+const birthPlace = document.getElementById('birthPlace');
+
+attachSuggestions(
+    birthPlace,
+    q => isUkraine()
+                ? getJson('/api/ua/cities?q=' + encodeURIComponent(q))
+                : Promise.resolve([]),
+    c => c.present,
+    c => {birthPlace.value = c.name;}
+);
