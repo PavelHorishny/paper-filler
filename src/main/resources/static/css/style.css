@@ -84,40 +84,12 @@ a { color: var(--copper-dark); }
     cursor: pointer;
 }
 .btn-ghost:hover { border-color: var(--gold); color: #FFFFFF; }
-.personal-data {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-}
 
-.short {
-    width: 60px;
-}
 
-.wide {
-    width: 300px;
-}
-
-.row {
-    display: flex;
-    gap: 16px;
-    margin-bottom: 16px;
-}
-
-.postal {
-    width: 80px;
-}
-.checkbox-cell {
-    align-self: flex-end;
-    padding-bottom: 4px;
-}
 .preview th { text-align: left; padding: 4px 16px 4px 0; color: #555; font-weight: normal; }
 .preview td { padding: 4px 0; }
 .ok { color: #2a7; font-weight: bold; }
-input:user-invalid {
-    border-color: #c00;
-    background: #fff5f5;
-}
+
 
 #whatsNew { max-width: 480px; border: 1px solid #ccc; border-radius: 8px; padding: 1.5rem; }
 #whatsNew::backdrop { background: rgba(0, 0, 0, 0.4); }
@@ -147,3 +119,94 @@ input:user-invalid {
 }
 .suggestions li { padding: 6px 8px; cursor: pointer; }
 .suggestions li:hover { background: #eee; }
+
+/* ========== Карточки и две колонки ========== */
+.form-cols { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
+.form-col  { flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
+
+fieldset.card {
+    margin: 0;
+    min-width: 0;
+    padding: 22px 24px;
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px rgba(46, 46, 48, 0.04);
+}
+fieldset.card > legend {
+    float: left;               /* трюк: legend становится обычным заголовком внутри карточки */
+    width: 100%;
+    padding: 0;
+    margin: 0 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--graphite);
+}
+fieldset.card > legend + * { clear: both; }
+
+.fields { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 12px; }
+.fields:last-child { margin-bottom: 0; }
+
+/* ширина полей: s — короткое, m — обычное, l — широкое */
+.w-xs { flex: 0 1 90px; }
+.w-s  { flex: 0 1 140px; }
+.w-m  { flex: 1 1 180px; }
+.w-l  { flex: 2 1 260px; }
+
+/* ========== Плавающие подписи ========== */
+.fl { position: relative; min-width: 0; }
+.fl input,
+.fl select {
+    width: 100%;
+    height: 54px;
+    padding: 22px 12px 6px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    font: inherit;
+    font-size: 15px;
+    color: var(--text);
+}
+.fl input::placeholder { color: transparent; }
+.fl label {
+    position: absolute;
+    left: 13px;
+    top: 17px;
+    font-size: 15px;
+    color: #6B665E;
+    pointer-events: none;      /* клик проходит сквозь подпись в поле */
+    white-space: nowrap;
+    transition: top 0.15s, font-size 0.15s, color 0.15s;
+}
+.fl input:focus + label,
+.fl input:not(:placeholder-shown) + label,
+.fl--fixed label {
+    top: 7px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--muted);
+}
+.fl input:focus,
+.fl select:focus {
+    outline: none;
+    border-color: var(--copper);
+    box-shadow: 0 0 0 3px rgba(156, 92, 38, 0.18);
+}
+.fl input:focus + label { color: var(--copper-dark); }
+.fl input:user-invalid { border-color: var(--error); background: #FFF6F5; }
+
+/* чекбокс «Студент» — в рамке той же высоты, что поля */
+.check {
+    height: 54px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    font-size: 14px;
+}
+.check input { width: 18px; height: 18px; accent-color: var(--copper); }
+
+.suggestions { top: calc(100% + 4px); }

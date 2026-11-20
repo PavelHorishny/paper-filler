@@ -191,7 +191,8 @@ function attachSuggestions(input, loadItems, labelOf, onChoose) {
     box.className = 'suggestions';
     box.hidden = true;
     input.parentElement.style.position = 'relative';
-    input.after(box);                       // список сразу под полем
+    input.parentElement.appendChild(box);
+                         // список сразу под полем
 
     let timer = null;
 
