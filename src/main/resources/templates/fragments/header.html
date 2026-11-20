@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<body>
+
+<header th:fragment="header(showLogout)" class="app-header">
+    <div class="app-header__inner">
+        <div class="brand">
+            <div class="brand__mark" aria-hidden="true">F</div>
+            <div class="brand__text">
+                <span class="brand__name">FORTUNA</span>
+                <span class="brand__sub">PAPER-FILLER</span>
+            </div>
+            <span class="brand__version" th:if="${release != null}"
+                  th:text="'v' + ${release.version}">v0.0.0</span>
+        </div>
+        <form th:if="${showLogout}" th:action="@{/logout}" method="post">
+            <button type="submit" class="btn-ghost">Выйти</button>
+        </form>
+    </div>
+</header>
+
+</body>
+</html>

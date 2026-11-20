@@ -4,79 +4,88 @@
     <meta charset="UTF-8">
     <title>Проверка и документы</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap">
 </head>
 <body>
+<div th:replace="~{fragments/header :: header(true)}"></div>
+<main class="page-main">
 
-<p th:if="${param.done}" class="ok">Документы сформированы ✔</p>
-<div class="page">
+    <h1 class="page-title" th:text="|Документы для: ${form.name} ${form.surname}|">Документы для: …</h1>
 
-    <div class="page-left">
-        <h2>Проверьте данные</h2>
-        <table class="preview">
-            <tr><th>Гражданство</th>  <td th:text="${form.citizenship?.country}"></td></tr>
-            <tr><th>Имя и фамилия</th><td th:text="|${form.name} ${form.surname}|"></td></tr>
-            <tr><th>Дата рождения</th>
-                <td><span th:if="${form.birthDate}" th:text="${#temporals.format(form.birthDate, 'dd.MM.yyyy')}"></span></td></tr>
-            <tr><th>Место рождения</th><td th:text="${form.birthPlace}"></td></tr>
-            <tr><th>PESEL</th>         <td th:text="${form.pesel}"></td></tr>
-            <tr><th>Паспорт</th>       <td th:text="|${form.passport.series} ${form.passport.number}|"></td></tr>
-            <tr><th>Телефон / Viber</th><td th:text="|${form.phoneNumber} / ${form.viber}|"></td></tr>
-            <tr><th>E-mail</th>        <td th:text="${form.email}"></td></tr>
-            <tr><th>Номер счёта</th>   <td th:text="${form.account}"></td></tr>
-            <tr><th>Банк</th><td th:text="${form.bank}"></td></tr>
-            <tr><th>Домашний адрес</th><td th:text="${form.homeAddress.shortAddress()}"></td></tr>
-            <tr><th>Адрес в Польше</th><td th:text="${form.localAddress.shortAddress()}"></td></tr>
-            <tr><th>Urząd skarbowy</th><td th:text="${form.taxOffice?.label}"></td></tr>
-            <tr th:if="${form.student}"><th>Учебное заведение</th><td th:text="${form.schoolName}"></td></tr>
-        </table>
+    <div class="doc-page">
 
-        <p>
-            <a th:href="@{/edit}">✎ Редактировать</a>
-            &nbsp;|&nbsp;
-            <a th:href="@{/}">Новая форма</a>
-        </p>
-    </div>
+        <section class="card doc-page__left">
+            <h2 class="card-title">Проверьте данные</h2>
+            <table class="preview">
+                <tr><th>Гражданство</th>    <td th:text="${form.citizenship?.country}"></td></tr>
+                <tr><th>Имя и фамилия</th>  <td th:text="|${form.name} ${form.surname}|"></td></tr>
+                <tr><th>Дата рождения</th>
+                    <td><span th:if="${form.birthDate}" th:text="${#temporals.format(form.birthDate, 'dd.MM.yyyy')}"></span></td></tr>
+                <tr><th>Место рождения</th> <td th:text="${form.birthPlace}"></td></tr>
+                <tr><th>PESEL</th>          <td th:text="${form.pesel}"></td></tr>
+                <tr><th>Паспорт</th>        <td th:text="|${form.passport.series} ${form.passport.number}|"></td></tr>
+                <tr><th>Телефон / Viber</th><td th:text="|${form.phoneNumber} / ${form.viber}|"></td></tr>
+                <tr><th>E-mail</th>         <td th:text="${form.email}"></td></tr>
+                <tr><th>Номер счёта</th>    <td th:text="${form.account}"></td></tr>
+                <tr><th>Банк</th>           <td th:text="${form.bank}"></td></tr>
+                <tr><th>Домашний адрес</th> <td th:text="${form.homeAddress.shortAddress()}"></td></tr>
+                <tr><th>Адрес в Польше</th> <td th:text="${form.localAddress.shortAddress()}"></td></tr>
+                <tr><th>Urząd skarbowy</th> <td th:text="${form.taxOffice?.label}"></td></tr>
+                <tr th:if="${form.student}"><th>Учебное заведение</th><td th:text="${form.schoolName}"></td></tr>
+            </table>
 
-    <div class="page-right">
-        <h2>Какие документы заполнить?</h2>
-        <form th:action="@{/documents}" method="post">
-
-            <p>
-                <label th:each="entry : ${companyDocs}">
-                    <input type="checkbox" class="company-toggle" th:value="${entry.key}">
-                    <span th:text="${entry.key}">APT</span>
-                </label>
-            </p>
-
-            <div class="companies">
-                <fieldset class="company" th:each="entry : ${companyDocs}"
-                          th:data-company="${entry.key}" hidden disabled>
-                    <legend th:text="${entry.key}">APT</legend>
-                    <p th:each="d : ${entry.value}">
-                        <label>
-                            <input type="checkbox" name="docs" th:value="${d.id()}" th:checked="${d.required()}">
-                            <span th:text="${d.id()}"></span>
-                        </label>
-                    </p>
-                </fieldset>
+            <div class="card-actions">
+                <a th:href="@{/edit}" class="btn btn-secondary">Редактировать</a>
+                <a th:href="@{/}" class="btn btn-secondary">Новая форма</a>
             </div>
+        </section>
 
-            <fieldset class="company">
-                <legend>Общие</legend>
-                <p th:each="d : ${commonDocs}">
-                    <label>
+        <section class="card doc-page__right">
+            <h2 class="card-title">Какие документы заполнить?</h2>
+
+            <form id="docs-form" th:action="@{/documents}" method="post">
+
+                <div class="pills">
+                    <label class="pill" th:each="entry : ${companyDocs}">
+                        <input type="checkbox" class="company-toggle" th:value="${entry.key}">
+                        <span th:text="${entry.key}">APT</span>
+                    </label>
+                </div>
+
+                <div class="companies">
+                    <fieldset class="company" th:each="entry : ${companyDocs}"
+                              th:data-company="${entry.key}" hidden disabled>
+                        <legend th:text="${entry.key}">APT</legend>
+                        <div class="doc-list">
+                            <label class="doc" th:each="d : ${entry.value}">
+                                <input type="checkbox" name="docs" th:value="${d.id()}" th:checked="${d.required()}">
+                                <span th:text="${d.id()}"></span>
+                                <small class="req" th:if="${d.required()}">обяз.</small>
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <p class="group-title">Общие</p>
+                <div class="doc-grid">
+                    <label class="doc" th:each="d : ${commonDocs}">
                         <input type="checkbox" name="docs" th:value="${d.id()}" th:checked="${d.required()}">
                         <span th:text="${d.id()}"></span>
+                        <small class="req" th:if="${d.required()}">обяз.</small>
                     </label>
-                </p>
-            </fieldset>
+                </div>
 
-            <button type="submit">Сформировать</button>
-        </form>
+                <div class="doc-footer">
+                    <span id="doc-hint" class="action-bar__hint">Документы каждой фирмы — в своей папке архива</span>
+                    <button type="submit" class="btn btn-primary">Скачать zip</button>
+                </div>
+            </form>
+        </section>
     </div>
-
-</div>
-
+</main>
+<script th:src="@{/js/session.js}"></script>
 <script th:src="@{/js/documents.js}"></script>
 </body>
 </html>
