@@ -11,7 +11,6 @@
 <body>
 <div th:replace="~{fragments/header :: header(true)}"></div>
 <main class="page-main">
-    <p th:if="${param.done}" class="notice">Документы сформированы ✔</p>
 
     <h1 class="page-title" th:text="|Документы для: ${form.name} ${form.surname}|">Документы для: …</h1>
 
@@ -46,7 +45,7 @@
         <section class="card doc-page__right">
             <h2 class="card-title">Какие документы заполнить?</h2>
 
-            <form th:action="@{/documents}" method="post">
+            <form id="docs-form" th:action="@{/documents}" method="post">
 
                 <div class="pills">
                     <label class="pill" th:each="entry : ${companyDocs}">
@@ -79,7 +78,7 @@
                 </div>
 
                 <div class="doc-footer">
-                    <span class="action-bar__hint">Документы каждой фирмы — в своей папке архива</span>
+                    <span id="doc-hint" class="action-bar__hint">Документы каждой фирмы — в своей папке архива</span>
                     <button type="submit" class="btn btn-primary">Скачать zip</button>
                 </div>
             </form>

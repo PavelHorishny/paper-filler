@@ -129,15 +129,7 @@ a { color: var(--copper-dark); }
 
 .card-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
 
-/* сообщение «готово» */
-.notice {
-    margin: 0 0 20px;
-    padding: 12px 16px;
-    border-radius: 10px;
-    background: #EAF5EE;
-    color: #1E6B3A;
-    font-weight: 500;
-}
+.hint-ok { color: #1E6B3A; font-weight: 600; }
 
 /* документы по фирмам */
 .companies { display: flex; flex-wrap: wrap; gap: 16px; margin: 20px 0; }
@@ -419,3 +411,5 @@ fieldset.card > legend + * { clear: both; }
     gap: 10px;
 }
 .action-bar__hint { margin-right: auto; font-size: 13px; color: var(--muted); }
+
+.hint-error { color: var(--error); font-weight: 600; }
