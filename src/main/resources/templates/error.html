@@ -9,9 +9,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap">
 </head>
 <body>
+<div th:replace="~{fragments/header :: header(false)}"></div>
+
+<main class="page-main">
 <h2>Ошибка</h2>
 <p>Something went wrong. Try again or contact the administrator.</p>
 <p>Что-то пошло не так. Попробуйте ещё раз или обратитесь к администратору.</p>
 <p><a th:href="@{/}">← На главную</a></p>
+</main>
 </body>
 </html>

@@ -8,8 +8,9 @@
     <meta charset="UTF-8">
     <title>Paper Filler</title>
 </head>
-
 <body>
+<div th:replace="~{fragments/header :: header(true)}"></div>
+
 <dialog id="whatsNew" th:if="${release != null}" th:data-version="${release.version}">
     <h2>Что нового в версии <span th:text="${release.version}">0.0.0</span></h2>
     <ul>
@@ -17,10 +18,9 @@
     </ul>
     <button type="button" id="whatsNewClose">Понятно</button>
 </dialog>
-<main class="page-main">
-<div th:replace="~{fragments/header :: header(true)}"></div>
 
-<form th:action="@{/}" th:object="${clientForm}" method="post">
+<main class="page-main">
+    <form th:action="@{/}" th:object="${clientForm}" method="post">
     <fieldset>
         <p>
             <label>Гражданство</label><br>

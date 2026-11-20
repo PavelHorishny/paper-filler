@@ -10,6 +10,7 @@
 </head>
 <body>
 <div th:replace="~{fragments/header :: header(true)}"></div>
+<main class="page-main">
 <p th:if="${param.done}" class="ok">Документы сформированы ✔</p>
 <div class="page">
 
@@ -79,7 +80,7 @@
     </div>
 
 </div>
-
+</main>
 <script th:src="@{/js/documents.js}"></script>
 </body>
 </html>

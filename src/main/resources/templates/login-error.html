@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap">
 </head>
 <body>
-
+<div th:replace="~{fragments/header :: header(false)}"></div>
+<main class="page-main">
 <div th:if="${param.denied}">
     <h2>Нет доступа</h2>
     <p>Этот Google-аккаунт не добавлен в список пользователей. Обратитесь к администратору.</p>
@@ -21,6 +22,6 @@
 </div>
 
 <p><a th:href="@{/}">Войти снова</a></p>
-
+</main>
 </body>
 </html>
