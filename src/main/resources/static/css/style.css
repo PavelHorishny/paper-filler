@@ -210,3 +210,70 @@ fieldset.card > legend + * { clear: both; }
 .check input { width: 18px; height: 18px; accent-color: var(--copper); }
 
 .suggestions { top: calc(100% + 4px); }
+/* ========== Подпись группы ========== */
+.lbl {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+/* ========== Кнопки-таблетки (радио) ========== */
+.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { position: relative; }
+.pill input {
+    position: absolute;
+    opacity: 0;                /* кружок не виден, но остаётся в форме и доступен с клавиатуры */
+    width: 1px;
+    height: 1px;
+}
+.pill span {
+    display: inline-flex;
+    align-items: center;
+    height: 42px;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--card);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--graphite);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.pill span:hover { border-color: var(--graphite); }
+.pill input:checked + span {
+    background: var(--graphite);
+    border-color: var(--graphite);
+    color: #FFFFFF;
+}
+.pill input:focus-visible + span { box-shadow: 0 0 0 3px rgba(156, 92, 38, 0.3); }
+
+/* ========== Переключатель-сегменты (Фирменное / Своё) ========== */
+.seg {
+    display: inline-flex;
+    gap: 4px;
+    padding: 4px;
+    background: #EFEAE2;
+    border-radius: 12px;
+}
+.seg label { position: relative; }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.seg span {
+    display: inline-flex;
+    align-items: center;
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+}
+.seg input:checked + span {
+    background: var(--card);
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(46, 46, 48, 0.12);
+}
+.seg input:focus-visible + span { box-shadow: 0 0 0 3px rgba(156, 92, 38, 0.3); }

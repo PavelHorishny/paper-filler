@@ -30,13 +30,15 @@
                     <legend>Клиент</legend>
                     <div class="fields">
                         <div>
-                            <span class="lbl">Гражданство</span><br>
-                            <label th:each="c : ${citizenships}">
-                                <input type="radio" th:field="*{citizenship}" th:value="${c}" required
-                                       th:data-series="${c.seriesPattern}"
-                                       th:data-number="${c.numberPattern}">
-                                <span th:text="${c.label}"></span>
-                            </label>
+                            <span class="lbl">Гражданство</span>
+                            <div class="pills">
+                                <label class="pill" th:each="c : ${citizenships}">
+                                    <input type="radio" th:field="*{citizenship}" th:value="${c}" required
+                                           th:data-series="${c.seriesPattern}"
+                                           th:data-number="${c.numberPattern}">
+                                    <span th:text="${c.label}"></span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="fields">
@@ -165,8 +167,10 @@
                 <fieldset class="card">
                     <legend>Адрес в Польше</legend>
                     <div class="fields">
-                        <label><input type="radio" th:field="*{companyHousing}" th:value="true"> Фирменное жильё</label>
-                        <label><input type="radio" th:field="*{companyHousing}" th:value="false"> Своё жильё</label>
+                        <div class="seg" role="group" aria-label="Тип жилья">
+                            <label><input type="radio" th:field="*{companyHousing}" th:value="true"><span>Фирменное жильё</span></label>
+                            <label><input type="radio" th:field="*{companyHousing}" th:value="false"><span>Своё жильё</span></label>
+                        </div>
                     </div>
 
                     <fieldset id="company-address" class="fields" style="border: 0; padding: 0; margin: 0 0 12px">
