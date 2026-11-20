@@ -11,17 +11,41 @@
 <body>
 <div th:replace="~{fragments/header :: header(false)}"></div>
 <main class="page-main">
-<div th:if="${param.denied}">
-    <h2>Нет доступа</h2>
-    <p>Этот Google-аккаунт не добавлен в список пользователей. Обратитесь к администратору.</p>
-</div>
+    <div class="status-page">
 
-<div th:unless="${param.denied}">
-    <h2>Сессия закончилась</h2>
-    <p>Войдите ещё раз — это займёт пару секунд.</p>
-</div>
+        <section class="status-card" th:if="${param.denied}">
+            <div class="status-icon status-icon--denied" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="11" width="16" height="10" rx="2"></rect>
+                    <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
+                </svg>
+            </div>
+            <h1>Нет доступа</h1>
+            <p>Этот Google-аккаунт не добавлен в список пользователей приложения.</p>
+            <p class="status-note">Если вам нужен доступ — обратитесь к администратору и сообщите свой email.</p>
+            <div class="status-actions">
+                <a th:href="@{/}" class="btn btn-secondary">Войти другим аккаунтом</a>
+            </div>
+        </section>
 
-<p><a th:href="@{/}">Войти снова</a></p>
+        <section class="status-card" th:unless="${param.denied}">
+            <div class="status-icon status-icon--session" aria-hidden="true">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <polyline points="12 7 12 12 15 14"></polyline>
+                </svg>
+            </div>
+            <h1>Сессия закончилась</h1>
+            <p>Вы долго не пользовались страницей. Войдите ещё раз — это займёт пару секунд.</p>
+            <p class="status-note">Данные формы, которые не были отправлены, нужно будет ввести заново.</p>
+            <div class="status-actions">
+                <a th:href="@{/}" class="btn btn-primary">Войти снова</a>
+            </div>
+        </section>
+
+    </div>
 </main>
 </body>
 </html>

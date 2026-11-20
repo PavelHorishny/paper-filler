@@ -413,3 +413,33 @@ fieldset.card > legend + * { clear: both; }
 .action-bar__hint { margin-right: auto; font-size: 13px; color: var(--muted); }
 
 .hint-error { color: var(--error); font-weight: 600; }
+
+/* ========== Страницы ошибок ========== */
+.status-page { display: flex; justify-content: center; padding: 48px 0; }
+.status-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 40px;
+    text-align: center;
+    background: var(--card);
+    border: 1px solid var(--border-soft);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(46, 46, 48, 0.06);
+}
+.status-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.status-icon--error   { background: #FCEDEB; color: var(--error); }
+.status-icon--session { background: #F6EBDD; color: #8A5020; }
+.status-icon--denied  { background: var(--graphite); color: var(--gold-light); }
+
+.status-card h1 { margin: 0; font-size: 24px; color: var(--graphite); }
+.status-card p  { margin: 10px 0 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+.status-card .status-note { margin-top: 6px; font-size: 13px; color: #6B665E; }
+.status-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
