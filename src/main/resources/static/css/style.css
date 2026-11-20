@@ -1,3 +1,89 @@
+/* ========== Цвета Fortuna и основа ========== */
+:root {
+    --graphite:    #2E2E30;
+    --copper:      #9C5C26;
+    --copper-dark: #7A4A1E;
+    --gold:        #C9A15B;
+    --gold-light:  #E2C58C;
+    --bg:          #F4F1EC;
+    --card:        #FFFFFF;
+    --border:      #D6CFC4;
+    --border-soft: #E6E0D6;
+    --text:        #1F1F21;
+    --muted:       #5A564F;
+    --auto-bg:     #FBF2E7;
+    --auto-border: #E0C39C;
+    --error:       #B3352A;
+    --radius:      9px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+a { color: var(--copper-dark); }
+
+.page-main {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 28px 32px 110px;
+}
+
+/* ========== Шапка ========== */
+.app-header { background: var(--graphite); border-bottom: 3px solid var(--gold); }
+.app-header__inner {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand__mark {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 700;
+}
+.brand__text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand__name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold-light);
+}
+.brand__sub { font-size: 11px; letter-spacing: 2px; color: #BDB7AD; }
+.brand__version {
+    margin-left: 8px;
+    font-size: 12px;
+    color: var(--gold-light);
+    border: 1px solid #6A5A40;
+    border-radius: 999px;
+    padding: 3px 10px;
+}
+.app-header form { margin: 0; }
+.btn-ghost {
+    height: 40px; padding: 0 16px;
+    border-radius: var(--radius);
+    border: 1px solid #6A5A40;
+    background: transparent;
+    color: #EDE6DA;
+    font: inherit; font-size: 14px;
+    cursor: pointer;
+}
+.btn-ghost:hover { border-color: var(--gold); color: #FFFFFF; }
 .personal-data {
     display: flex;
     gap: 16px;

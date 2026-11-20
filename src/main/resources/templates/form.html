@@ -2,9 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="ru">
 <head>
     <link rel = "stylesheet" th:href = "@{/css/style.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap">
     <meta charset="UTF-8">
     <title>Paper Filler</title>
 </head>
+
 <body>
 <dialog id="whatsNew" th:if="${release != null}" th:data-version="${release.version}">
     <h2>Что нового в версии <span th:text="${release.version}">0.0.0</span></h2>
@@ -13,9 +17,9 @@
     </ul>
     <button type="button" id="whatsNewClose">Понятно</button>
 </dialog>
-<form th:action="@{/logout}" method="post" style="text-align: right">
-    <button type="submit">Выйти</button>
-</form>
+<main class="page-main">
+<div th:replace="~{fragments/header :: header(true)}"></div>
+
 <form th:action="@{/}" th:object="${clientForm}" method="post">
     <fieldset>
         <p>
@@ -247,7 +251,7 @@
 
     <button type="submit">Отправить</button>
 </form>
-
+</main>
 <script th:src="@{/js/form.js}"></script>
 </body>
 </html>

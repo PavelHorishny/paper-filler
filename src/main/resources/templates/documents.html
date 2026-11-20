@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <title>Проверка и документы</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@600;700&display=swap">
 </head>
 <body>
-
+<div th:replace="~{fragments/header :: header(true)}"></div>
 <p th:if="${param.done}" class="ok">Документы сформированы ✔</p>
 <div class="page">
 
