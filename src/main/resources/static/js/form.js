@@ -231,6 +231,8 @@ attachSuggestions(
         plCity.value     = c.name;
         plCommune.value  = c.gmina;
         plDistrict.value = c.powiat;
+        plCommune.dataset.auto  = 'true';
+        plDistrict.dataset.auto = 'true';
         citySym = c.sym;
     }
 );
@@ -272,7 +274,8 @@ async function fillPostcode() {
             plPostal.value = code;
             plPostal.dataset.auto = 'true';
         } else if (plPostal.dataset.auto === 'true') {
-            plPostal.value = '';           // старый авто-индекс к новому адресу не подходит
+            plPostal.value = '';
+            plPostal.dataset.auto = 'false';
         }
     } catch (e) {
         // сервис недоступен — индекс впишут руками
@@ -300,7 +303,8 @@ async function fillTaxOffice() {
             taxSelect.value = office;
             taxSelect.dataset.auto = 'true';
         } else if (taxSelect.dataset.auto === 'true') {
-            taxSelect.value = '';                     // старый авто-выбор к новому адресу не подходит
+            taxSelect.value = '';
+            taxSelect.dataset.auto = 'false';
         }
     } catch (e) {
         // не получилось — выберут руками
@@ -331,8 +335,9 @@ attachSuggestions(
         : Promise.resolve([]),                 // подсказки только для Украины
     c => c.present,                            // "м. Харків, Харківська обл."
     c => {
-        uaCity.value   = c.name;               // "Харків"
-        uaRegion.value = c.area;               // "Харківська"
+        uaCity.value   = c.name;
+        uaRegion.value = c.area;
+        uaRegion.dataset.auto = 'true';
         uaCityRef = c.streetsAvailable ? c.ref : null;
     }
 );
@@ -356,3 +361,9 @@ attachSuggestions(
     c => c.present,
     c => {birthPlace.value = c.name;}
 );
+
+document.addEventListener('input', e => {
+    if (e.target.dataset && e.target.dataset.auto === 'true') {
+        e.target.dataset.auto = 'false';
+    }
+});

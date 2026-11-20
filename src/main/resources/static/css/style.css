@@ -117,8 +117,31 @@ a { color: var(--copper-dark); }
     overflow-y: auto;
     min-width: 260px;
 }
-.suggestions li { padding: 6px 8px; cursor: pointer; }
-.suggestions li:hover { background: #eee; }
+/* ========== Список подсказок ========== */
+.suggestions {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    min-width: 280px;
+    max-height: 280px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background: var(--card);
+    border: 1px solid #E0D9CE;
+    border-radius: 10px;
+    box-shadow: 0 12px 28px rgba(46, 46, 48, 0.14);
+}
+.suggestions li {
+    padding: 9px 12px;
+    border-radius: 7px;
+    font-size: 14px;
+    cursor: pointer;
+}
+.suggestions li:hover { background: #F6EBDD; }
 
 /* ========== Карточки и две колонки ========== */
 .form-cols { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
@@ -209,7 +232,7 @@ fieldset.card > legend + * { clear: both; }
 }
 .check input { width: 18px; height: 18px; accent-color: var(--copper); }
 
-.suggestions { top: calc(100% + 4px); }
+
 /* ========== Подпись группы ========== */
 .lbl {
     display: block;
@@ -277,3 +300,21 @@ fieldset.card > legend + * { clear: both; }
     box-shadow: 0 1px 3px rgba(46, 46, 48, 0.12);
 }
 .seg input:focus-visible + span { box-shadow: 0 0 0 3px rgba(156, 92, 38, 0.3); }
+
+/* ========== Заполнено автоматически ========== */
+.fl input[data-auto="true"]:not(:placeholder-shown),
+.fl select[data-auto="true"] {
+    background: var(--auto-bg);
+    border-color: var(--auto-border);
+}
+.fl input[data-auto="true"]:not(:placeholder-shown) + label::after,
+.fl select[data-auto="true"] + label::after {
+    content: "авто";
+    margin-left: 6px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: #F6E6D2;
+    color: var(--copper-dark);
+    font-size: 10px;
+    font-weight: 600;
+}
