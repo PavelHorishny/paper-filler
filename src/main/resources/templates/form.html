@@ -16,11 +16,11 @@
     <ul>
         <li th:each="note : ${release.notes}" th:text="${note}">пункт</li>
     </ul>
-    <button type="button" id="whatsNewClose">Понятно</button>
+    <button type="button" id="whatsNewClose" class="btn btn-primary">Понятно</button>
 </dialog>
 
 <main class="page-main">
-    <form th:action="@{/}" th:object="${clientForm}" method="post">
+    <form id="client-form" th:action="@{/}" th:object="${clientForm}" method="post">
         <div class="form-cols">
 
             <!-- ===== Левая колонка: человек ===== -->
@@ -254,6 +254,13 @@
         <button type="submit">Отправить</button>
     </form>
 </main>
+<div class="action-bar">
+    <div class="action-bar__inner">
+        <span class="action-bar__hint">Поля с медной подсветкой заполнены автоматически — проверьте их</span>
+        <a th:href="@{/}" class="btn btn-secondary">Очистить</a>
+        <button type="submit" form="client-form" class="btn btn-primary">Далее — документы</button>
+    </div>
+</div>
 <script th:src="@{/js/form.js}"></script>
 </body>
 </html>

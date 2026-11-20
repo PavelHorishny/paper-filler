@@ -33,7 +33,7 @@ a { color: var(--copper-dark); }
 .page-main {
     max-width: 1480px;
     margin: 0 auto;
-    padding: 28px 32px 110px;
+    padding: 28px 32px 32px;
 }
 
 /* ========== Шапка ========== */
@@ -91,9 +91,17 @@ a { color: var(--copper-dark); }
 .ok { color: #2a7; font-weight: bold; }
 
 
-#whatsNew { max-width: 480px; border: 1px solid #ccc; border-radius: 8px; padding: 1.5rem; }
-#whatsNew::backdrop { background: rgba(0, 0, 0, 0.4); }
-#whatsNew li { white-space: pre-line; }
+#whatsNew {
+    max-width: 520px;
+    border: 0;
+    border-radius: 16px;
+    padding: 28px 32px;
+    box-shadow: 0 20px 48px rgba(46, 46, 48, 0.25);
+}
+#whatsNew::backdrop { background: rgba(46, 46, 48, 0.45); }
+#whatsNew h2 { margin: 0 0 14px; font-size: 20px; color: var(--graphite); }
+#whatsNew ul { margin: 0 0 20px; padding-left: 20px; }
+#whatsNew li { margin-bottom: 8px; white-space: pre-line; }
 .page { display: flex; gap: 2rem; align-items: flex-start; }
 .page-left, .page-right { flex: 1; }
 
@@ -103,20 +111,7 @@ a { color: var(--copper-dark); }
 @media (max-width: 900px) {
     .page, .companies { flex-direction: column; }
 }
-.suggestions {
-    position: absolute;
-    z-index: 10;
-    left: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    background: #fff;
-    border: 1px solid #ccc;
-    max-height: 240px;
-    overflow-y: auto;
-    min-width: 260px;
-}
+
 /* ========== Список подсказок ========== */
 .suggestions {
     position: absolute;
@@ -318,3 +313,39 @@ fieldset.card > legend + * { clear: both; }
     font-size: 10px;
     font-weight: 600;
 }
+/* ========== Кнопки ========== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    height: 46px;
+    padding: 0 22px;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-primary { border: 0; background: var(--copper); color: #FFFFFF; }
+.btn-primary:hover { background: var(--copper-dark); }
+.btn-secondary { border: 1px solid var(--border); background: var(--card); color: var(--graphite); }
+.btn-secondary:hover { border-color: var(--graphite); }
+
+/* ========== Липкая нижняя панель ========== */
+.action-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.94);
+    border-top: 1px solid var(--border-soft);
+    box-shadow: 0 -6px 18px rgba(46, 46, 48, 0.06);
+}
+.action-bar__inner {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.action-bar__hint { margin-right: auto; font-size: 13px; color: var(--muted); }
