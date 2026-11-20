@@ -8,16 +8,10 @@ document.querySelectorAll('.company-toggle').forEach(toggle => {
     updateCompany(toggle);   // при загрузке: браузер мог запомнить галочку после «Назад»
     toggle.addEventListener('change', () => updateCompany(toggle));
 });
-// Сообщение после нажатия «Скачать zip» (страница не перезагружается — файл просто скачивается)
+
 const docsForm = document.getElementById('docs-form');
 const docHint  = document.getElementById('doc-hint');
 
-docsForm.addEventListener('submit', () => {
-    const selected = docsForm.querySelectorAll('input[name="docs"]:checked:enabled').length;
-    if (selected === 0) return;            // ничего не выбрано — сервер вернёт на страницу
-    docHint.textContent = '✔ Архив формируется — скачивание начнётся через пару секунд';
-    docHint.classList.add('hint-ok');
-});
 
 // «Скачать zip»: отправляем форму сами через fetch, чтобы знать, когда архив готов
 docsForm.addEventListener('submit', async (event) => {
