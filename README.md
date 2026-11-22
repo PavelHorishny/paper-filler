@@ -80,6 +80,29 @@ templates/
    (same name and same folder).
 3. Done — the new version is used within about a minute, no restart needed.
 
+## Templates (Cloud Storage)
+
+Templates and `documents.yaml` are **not stored in this repository**.
+They live in the Cloud Storage bucket `paper-filler-templates-962102822307`,
+which Cloud Run mounts read-only at `/app/templates`.
+
+Locally the same files are kept in `templates/` (ignored by git):
+
+```
+templates/
+├── documents.yaml        list of documents
+├── *.docx                common documents
+├── APT/*.docx            company APT
+└── OUT/*.docx            company OUT
+```
+
+### Update an existing template
+
+1. Edit the `.docx` locally in `templates/`, check generation locally.
+2. Cloud Console → Cloud Storage → bucket → open the folder → **Upload** → replace the file
+   (same name and same folder).
+3. Done — the new version is used within about a minute, no restart needed.
+
 ### Add a new template
 
 1. Put placeholders `{{key}}` into the `.docx`. Keys must exist in `DocumentGenerator.buildData()`.
@@ -99,6 +122,21 @@ templates/
    ```
 7. Check the Cloud Run log: `Loaded N documents`.
 
+### Remove a template
+
+1. Delete its entry from `templates/documents.yaml` **first**.
+2. Upload the updated `documents.yaml` to the bucket.
+3. Restart the service (command above).
+4. Only now delete the `.docx` from the bucket and from `templates/`.
+
+> Order matters: on startup the app checks that every template listed in
+> `documents.yaml` exists. If the file is deleted while it is still listed,
+> the app will not start.
+
+### Get the templates locally (new machine)
+
+Cloud Console → bucket → select files → **Download**, put them into `templates/`
+keeping the folder structure.
 ### Remove a template
 
 1. Delete its entry from `templates/documents.yaml` **first**.
