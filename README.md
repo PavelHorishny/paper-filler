@@ -27,8 +27,7 @@ src/main/java/app/paper_filler/
 ├── translit/    Cyrillic → Latin transliteration
 └── taxoffice/   tax offices
 templates/ local only, not in git — see "Templates (Cloud Storage)".
-templates/              .docx templates
-```
+templates/  .docx templates (local only, not in git)```
 
 ## Running locally
 
