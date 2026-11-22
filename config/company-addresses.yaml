@@ -1,0 +1,173 @@
+# Фирменные адреса для формы (режим «Фирменное»).
+# Файл потом кладётся в config/company-addresses.yaml.
+#
+# Правила:
+#   - отступы только пробелами (по 2), без Tab
+#   - каждый адрес начинается с "- id:"
+#   - id: латиница, без пробелов, слова через дефис, уникальный
+#   - номер дома / квартиры / индекс — в кавычках
+#   - tax-office: FIRST / SECOND / THIRD (Pierwszy / Drugi / Trzeci US w Szczecinie)
+#   - needs-apartment: true — если квартиру/комнату вписывают руками, иначе false
+#   - apartment: заполнить, только если номер квартиры всегда один и тот же, иначе ""
+#   - пустые поля оставляй как ""
+#   - нужен ещё адрес — скопируй блок целиком (от "- id:" до "needs-apartment:")
+
+app:
+  company-addresses:
+
+    - id: "AMK"                  # например: szczecin-wojska-1
+      label: "Małkowskiego"               # текст в выпадающем списке, например: "Szczecin, Wojska Polskiego 1 — общежитие"
+      region: "Zachodniopom."   # województwo
+      district: "Szczecin"            # powiat
+      commune: "Szczecin"             # gmina
+      city: "Szczecin"                # miejscowość
+      street: "A. Małkowskiego"              # улица — как пишете в форме
+      house: "18"               # номер дома
+      apartment: "9"           # квартира (если всегда одна и та же)
+      postal-code: "70-306"         # индекс, например "70-001"
+      tax-office: "SECOND"          # FIRST / SECOND / THIRD
+      needs-apartment: false  # true / false
+
+    - id: "JG74"
+      label: "Jagiellońska 74"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "Jagiellońska"
+      house: "74"
+      apartment: "2"
+      postal-code: "70-365"
+      tax-office: "SECOND"
+      needs-apartment: false
+
+    - id: "JG83"
+      label: "Jagiellońska 83"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "Jagiellońska"
+      house: "83"
+      apartment: "7"
+      postal-code: "70-362"
+      tax-office: "SECOND"
+      needs-apartment: false
+
+    - id: "JP"
+      label: "Jana Pawła"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "Jana Pawła II"
+      house: "8"
+      apartment: "6"
+      postal-code: "70-415"
+      tax-office: "FIRST"
+      needs-apartment: false
+
+    - id: "ZOL"
+      label: "Żółkiewskiego"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "Żółkiewskiego"
+      house: "5"
+      apartment: "18"
+      postal-code: "70-346"
+      tax-office: "SECOND"
+      needs-apartment: false
+
+    - id: "Jag"
+      label: "Jagiełły"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "Jagiełły"
+      house: "20A"
+      apartment: "10"
+      postal-code: "70-260"
+      tax-office: "SECOND"
+      needs-apartment: false
+
+    - id: "BL"
+      label: "Śmiałego"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "B. Śmiałego"
+      house: "29"
+      apartment: "10"
+      postal-code: "70-348"
+      tax-office: "SECOND"
+      needs-apartment: false
+
+    - id: "PT"
+      label: "Potulicka"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "Potulicka"
+      house: "15"
+      apartment: "9"
+      postal-code: "70-234"
+      tax-office: "SECOND"
+      needs-apartment: false
+
+    - id: "LUK"
+      label: "Łukasińskiego"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "Łukasińskiego"
+      house: "108D"
+      apartment: ""
+      postal-code: "71-215"
+      tax-office: "SECOND"
+      needs-apartment: false
+
+    - id: "LOK"
+      label: "Łokietka"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "W. Łokietka"
+      house: "12"
+      apartment: "8"
+      postal-code: "70-255"
+      tax-office: "SECOND"
+      needs-apartment: false
+
+    - id: "BRZ4"
+      label: "Brzechwy 4"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "Jana Brzechwy"
+      house: "4"
+      apartment: ""
+      postal-code: "71-241"
+      tax-office: "SECOND"
+      needs-apartment: true
+
+    - id: "BRZ6"
+      label: "Brzechwy 6"
+      region: "Zachodniopom."
+      district: "Szczecin"
+      commune: "Szczecin"
+      city: "Szczecin"
+      street: "Jana Brzechwy"
+      house: "6"
+      apartment: ""
+      postal-code: "71-241"
+      tax-office: "SECOND"
+      needs-apartment: true
+

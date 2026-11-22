@@ -1,0 +1,43 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID:missing}
+            client-secret: ${GOOGLE_CLIENT_SECRET:missing}
+            scope: openid,email,profile
+  application:
+    name: paper-filler
+  config:
+    import: "optional:file:./templates/documents.yaml, file:./config/banks.yaml, file:./config/company-addresses.yaml"
+
+app:
+  allowed-emails: ${ALLOWED_EMAILS:}
+  nova-poshta-key: ${NOVA_POSHTA_API_KEY:}
+  templates-dir: ./templates
+  release:
+    version: 0.6.1
+    notes:
+      - "It's not the tree that forsakes the flower"
+      - "But the flower that forsakes the tree"
+      - "Someday I'll learn to love these scars"
+      - "Still fresh from the red-hot blade of your words"
+      - "Did you ever hear what I told you?"
+      - "Did you ever read what I wrote you?"
+      - "How blind can you be, don't you see?"
+      - "You chose the long road but I'll be waiting"
+
+server:
+  port: ${PORT:8080}
+  forward-headers-strategy: framework
+  servlet:
+    session:
+      timeout: 30m
+      tracking-modes: cookie
+      cookie:
+        name: PAPERFILLER_SESSION
+
+logging:
+  level: 
+    org.springframework.security: INFO
