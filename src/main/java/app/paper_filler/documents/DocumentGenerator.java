@@ -67,7 +67,7 @@ public class DocumentGenerator {
     }
 
     private Map<String,Object> buildData(ClientForm form){
-        Map<String, Object> data = new HashMap<>();
+        Map<String, Object> data = new HashMap<>();/*
         data.put("name", form.getName());
         data.put("surname", form.getSurname());
         data.put("fulfilmentDate", formatDate(form.getFulfilmentDate()));
@@ -97,14 +97,18 @@ public class DocumentGenerator {
         data.put("homeApartment", form.getHomeAddress().getApartment());
         data.put("locPostal", form.getLocalAddress().getPostalCode());
         data.put("homePostal", form.getHomeAddress().getPostalCode());
-        data.put("locCity", form.getLocalAddress().getCity());
+        //data.put(getTag(TagShortening.LOCAL_CITY,form.getLocalAddress().getCity()), form.getLocalAddress().getCity());
+        data.put("lCityLab",getTag(TagShortening.LOCAL_CITY,form.getLocalAddress().getCity()));
+        data.put(TagShortening.LOCAL_CITY.tag,form.getLocalAddress().getCity());
+        data.put("hCityLab",getTag(TagShortening.HOME_CITY,form.getHomeAddress().getCity()));
         data.put("homeCity", form.getHomeAddress().getCity());
         data.put("taxOffice", form.getTaxOffice() != null ? form.getTaxOffice().getAddress() : "");
         data.put("account", formatAccount(form.getAccount()));
         data.put("schoolName", text(form.getSchoolName()));
         data.put("month", form.getFulfilmentDate().format(MONTH));
         data.put("stanowisko", "magazynier");
-        data.put("bank", text(form.getBank()));
+        data.put("bank", text(form.getBank()));*/
+        collectData(data,form);
         return data;
     }
 
@@ -126,5 +130,63 @@ public class DocumentGenerator {
             result.append(' ').append(digits,i,Math.min(i+4,digits.length()));
         }
         return result.toString();
+    }
+
+    private String getTag(TagShortening tags, String name){
+        if(name.length()+tags.full.length()<=tags.maxLength){
+            return tags.full;
+        }else{
+            if(name.length()+tags.shorter.length()<=tags.maxLength){
+                return tags.shorter;
+            }else {
+                return tags.shortest;
+            }
+        }
+    }
+
+    private void collectData(Map<String, Object> data, ClientForm form){
+        for(Tags tag : Tags.values()){
+            switch (tag){
+                case NAME -> data.put(Tags.NAME.value, form.getName());
+                case SURNAME -> data.put(Tags.SURNAME.value, form.getSurname());
+                case FULFILMENT_DATE -> data.put(Tags.FULFILMENT_DATE.value, formatDate(form.getFulfilmentDate()));
+                case LOCATION -> data.put(Tags.LOCATION.value, "Szczecin");
+                case PESEL -> data.put(Tags.PESEL.value, form.getPesel());
+                case HOME_ADDRESS -> data.put(Tags.HOME_ADDRESS.value, form.getHomeAddress().shortAddress());
+                case LOCAL_ADDRESS -> data.put(Tags.LOCAL_ADDRESS.value, form.getLocalAddress().shortAddress());
+                case VIBER -> data.put(Tags.VIBER.value, text(form.getViber()));
+                case PHONE -> data.put(Tags.PHONE.value, text(form.getPhoneNumber()));
+                case MAIL -> data.put(Tags.MAIL.value, text(form.getEmail()));
+                case BIRTH_DATE -> data.put(Tags.BIRTH_DATE.value, formatDate(form.getBirthDate()));
+                case BIRTH_PLACE -> data.put(Tags.BIRTH_PLACE.value, text(form.getBirthPlace()));
+                case CITIZENSHIP -> data.put(Tags.CITIZENSHIP.value, form.getCitizenship().getCountry());
+                case PASSPORT_SERIES -> data.put(Tags.PASSPORT_SERIES.value, form.getPassport().getSeries());
+                case PASSPORT_NUMBER -> data.put(Tags.PASSPORT_NUMBER.value, form.getPassport().getNumber());
+                case LOCAL_REGION -> data.put(Tags.LOCAL_REGION.value, form.getLocalAddress().getRegion());
+                case HOME_REGION -> data.put(Tags.HOME_REGION.value, form.getHomeAddress().getRegion());
+                case LOCAL_DISTRICT -> data.put(Tags.LOCAL_DISTRICT.value, form.getLocalAddress().getDistrict());
+                case HOME_DISTRICT -> data.put(Tags.HOME_DISTRICT.value, form.getHomeAddress().getDistrict());
+                case LOCAL_COMMUNE -> data.put(Tags.LOCAL_COMMUNE.value, form.getLocalAddress().getCommune());
+                case HOME_COMMUNE -> data.put(Tags.HOME_COMMUNE.value, form.getHomeAddress().getCommune());
+                case LOCAL_STREET -> data.put(Tags.LOCAL_STREET.value, form.getLocalAddress().getStreet());
+                case HOME_STREET -> data.put(Tags.HOME_STREET.value, form.getHomeAddress().getStreet());
+                case LOCAL_HOUSE -> data.put(Tags.LOCAL_HOUSE.value, form.getLocalAddress().getHouse());
+                case HOME_HOUSE -> data.put(Tags.HOME_HOUSE.value, form.getHomeAddress().getHouse());
+                case LOCAL_APARTMENT -> data.put(Tags.LOCAL_APARTMENT.value, form.getLocalAddress().getApartment());
+                case HOME_APARTMENT -> data.put(Tags.HOME_APARTMENT.value, form.getHomeAddress().getApartment());
+                case LOCAL_POSTAL_CODE -> data.put(Tags.LOCAL_POSTAL_CODE.value, form.getLocalAddress().getPostalCode());
+                case HOME_POSTAL_CODE -> data.put(Tags.HOME_POSTAL_CODE.value, form.getHomeAddress().getPostalCode());
+                case LOCAL_CITY_LABEL -> data.put(Tags.LOCAL_CITY_LABEL.value, getTag(TagShortening.LOCAL_CITY,form.getLocalAddress().getCity()));
+                case LOCAL_CITY -> data.put(TagShortening.LOCAL_CITY.tag,form.getLocalAddress().getCity());
+                case HOME_CITY_LABEL -> data.put(Tags.HOME_CITY_LABEL.value,getTag(TagShortening.HOME_CITY,form.getHomeAddress().getCity()));
+                case HOME_CITY -> data.put(Tags.HOME_CITY.value, form.getHomeAddress().getCity());
+                case TAX_OFFICE -> data.put(Tags.TAX_OFFICE.value, form.getTaxOffice() != null ? form.getTaxOffice().getAddress() : "");
+                case BANK_ACCOUNT -> data.put(Tags.BANK_ACCOUNT.value, formatAccount(form.getAccount()));
+                case SCHOOL_NAME -> data.put(Tags.SCHOOL_NAME.value, text(form.getSchoolName()));
+                case MONTH -> data.put(Tags.MONTH.value, form.getFulfilmentDate().format(MONTH));
+                case ROLE -> data.put(Tags.ROLE.value, "magazynier");
+                case BANK_NAME -> data.put(Tags.BANK_NAME.value, text(form.getBank()));
+            }
+        }
     }
 }
